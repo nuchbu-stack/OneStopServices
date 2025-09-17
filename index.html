@@ -1,68 +1,90 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>แบบประเมินความพึงพอใจ (Minimal)</title>
+  <meta charset="UTF-8">
+  <title>แบบประเมินความพึงพอใจ</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
-  <div class="w-full max-w-lg bg-white rounded-2xl shadow-lg p-6">
-    <h1 class="text-center text-2xl font-bold mb-4">แบบประเมินความพึงพอใจ</h1>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-2xl">
+    <h1 class="text-2xl font-bold mb-6 text-center">แบบประเมินความพึงพอใจ</h1>
 
-    <form id="surveyForm" class="space-y-4">
-      <!-- Q1 -->
+    <form id="surveyForm" class="space-y-6">
+      <!-- คำถาม 1 -->
       <div>
         <label class="block mb-2 font-medium">1. ระดับความพึงพอใจของท่าน</label>
-        <div class="flex gap-2">
-          <label class="emoji-option flex-1 cursor-pointer">
+        <div class="flex justify-between items-stretch space-x-2">
+          <!-- 5 -->
+          <label class="emoji-option cursor-pointer w-full">
             <input type="radio" name="q1" value="5" class="hidden" required>
-            <div class="p-3 rounded-lg text-center bg-green-500 text-white">😁<div class="text-sm mt-1">มากที่สุด</div></div>
+            <div class="emoji-box bg-green-500 text-white">
+              <span class="emoji text-3xl">😁</span>
+              <span class="label mt-1">มากที่สุด</span>
+            </div>
           </label>
-          <label class="emoji-option flex-1 cursor-pointer">
+          <!-- 4 -->
+          <label class="emoji-option cursor-pointer w-full">
             <input type="radio" name="q1" value="4" class="hidden">
-            <div class="p-3 rounded-lg text-center bg-lime-500 text-white">😊<div class="text-sm mt-1">มาก</div></div>
+            <div class="emoji-box bg-lime-500 text-white">
+              <span class="emoji text-3xl">😊</span>
+              <span class="label mt-1">มาก</span>
+            </div>
           </label>
-          <label class="emoji-option flex-1 cursor-pointer">
+          <!-- 3 -->
+          <label class="emoji-option cursor-pointer w-full">
             <input type="radio" name="q1" value="3" class="hidden">
-            <div class="p-3 rounded-lg text-center bg-yellow-300 text-black">😐<div class="text-sm mt-1">ปานกลาง</div></div>
+            <div class="emoji-box bg-yellow-300 text-black">
+              <span class="emoji text-3xl">😐</span>
+              <span class="label mt-1">ปานกลาง</span>
+            </div>
           </label>
-          <label class="emoji-option flex-1 cursor-pointer">
+          <!-- 2 -->
+          <label class="emoji-option cursor-pointer w-full">
             <input type="radio" name="q1" value="2" class="hidden">
-            <div class="p-3 rounded-lg text-center bg-orange-400 text-white">😕<div class="text-sm mt-1">น้อย</div></div>
+            <div class="emoji-box bg-orange-400 text-white">
+              <span class="emoji text-3xl">😕</span>
+              <span class="label mt-1">น้อย</span>
+            </div>
           </label>
-          <label class="emoji-option flex-1 cursor-pointer">
+          <!-- 1 -->
+          <label class="emoji-option cursor-pointer w-full">
             <input type="radio" name="q1" value="1" class="hidden">
-            <div class="p-3 rounded-lg text-center bg-red-500 text-white">😡<div class="text-sm mt-1">น้อยที่สุด</div></div>
+            <div class="emoji-box bg-red-500 text-white">
+              <span class="emoji text-3xl">😡</span>
+              <span class="label mt-1">น้อยที่สุด</span>
+            </div>
           </label>
         </div>
       </div>
 
-      <!-- Q2 -->
+      <!-- คำถาม 2 -->
       <div>
         <label class="block mb-2 font-medium">2. ท่านไม่พึงพอใจในเรื่องใด</label>
-        <select id="q2" name="q2" class="w-full p-2 rounded border">
+        <select name="q2" id="q2" class="w-full p-2 rounded-lg border border-gray-300" required>
           <option value="ไม่มี">ไม่มี</option>
           <option value="การให้บริการของเจ้าหน้าที่">การให้บริการของเจ้าหน้าที่</option>
-          <option value="ความล่าช้า">ความล่าช้า</option>
-          <option value="ความผิดพลาด/ความถูกต้อง">ความผิดพลาด/ความถูกต้อง</option>
+          <option value="ความล่าช้า">ความล่าช้า (จากขั้นตอน / รอนาน)</option>
+          <option value="ความผิดพลาด/ความถูกต้อง">ความผิดพลาด/ความถูกต้อง - ความถูกต้อง / ไม่ชัดเจน</option>
           <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
         </select>
-        <input id="q2_other" name="q2_other" class="w-full mt-2 p-2 border rounded hidden" placeholder="โปรดระบุ..." />
+        <input type="text" name="q2_other" id="q2_other" placeholder="โปรดระบุ..." class="w-full p-2 mt-2 rounded-lg border border-gray-300 hidden">
       </div>
 
-      <!-- Q3 -->
+      <!-- คำถาม 3 -->
       <div>
         <label class="block mb-2 font-medium">3. ข้อเสนอแนะเพิ่มเติม</label>
-        <textarea name="q3" rows="3" class="w-full p-2 border rounded"></textarea>
+        <textarea name="q3" rows="3" class="w-full p-2 rounded-lg border border-gray-300"></textarea>
       </div>
 
-      <button id="submitBtn" type="submit" class="w-full py-2 rounded bg-blue-500 text-white font-medium">
-        ส่งแบบประเมิน
-      </button>
+      <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:opacity-90 transition">ส่งแบบประเมิน</button>
     </form>
+
+    <div id="successMsg" class="hidden text-green-600 font-medium text-center mt-4 p-4 rounded-lg border border-green-400 bg-green-50">
+      บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม
+    </div>
   </div>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=1"></script>
 </body>
 </html>

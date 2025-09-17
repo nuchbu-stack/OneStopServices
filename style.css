@@ -1,0 +1,15 @@
+/* Animated emoji active state */
+.emoji-option div {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease, background-color 0.2s ease;
+  border-radius: 1rem;
+  padding: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.emoji-option input:checked + div,
+.emoji-option div.emoji-active {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  outline: 3px solid #1d4ed8;
+}
