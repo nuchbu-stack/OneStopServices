@@ -1,77 +1,41 @@
-/* base for emoji boxes (touch friendly) */
+/* basics for emoji boxes */
 .emoji-box {
   border-radius: 12px;
-  padding: 14px 8px;
+  padding: 18px 8px;
   text-align: center;
   transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms, outline 220ms;
   cursor: pointer;
   user-select: none;
-  min-height: 78px;      /* ให้พื้นที่แตะเพียงพอ */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-/* ensure sr-only (if not using Tailwind sr-only) */
+/* visually hide radio but keep accessible (sr-only class in Tailwind would do similar) */
 .sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
-/* active styles */
+/* active when input:checked + div structure (but our input is sr-only inside label, not adjacent — JS ensures emoji-active) */
+/* fallback: support .emoji-active class which script sets */
 .emoji-box.emoji-active,
 .emoji-option input:checked + .emoji-box {
-  transform: translateY(-6px) scale(1.08);
+  transform: translateY(-6px) scale(1.09);
   box-shadow: 0 14px 30px rgba(2,6,23,0.12);
   outline: 3px solid rgba(59,130,246,0.95); /* blue-500 */
 }
 
-/* label focus (keyboard) */
+/* keyboard focus style on label */
 .emoji-option:focus .emoji-box {
   outline: 2px dashed rgba(59,130,246,0.5);
   transform: translateY(-2px) scale(1.02);
 }
 
-/* responsive grid for options */
-/* default: desktop - 5 columns */
-.options-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+/* simple toast styling (script creates toasts inline) */
+.toast {
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  margin-top: 8px;
 }
 
-/* medium screens: 5->5 (same) but increase gap */
-@media (max-width: 1024px) {
-  .options-grid { gap: 10px; }
-}
-
-/* small screens: show 2 columns x rows (mobile) */
+/* responsive spacing tweak */
 @media (max-width: 640px) {
-  .options-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
-  .emoji-box {
-    padding: 12px 6px;
-    min-height: 72px;
-  }
-  .emoji { font-size: 24px; } /* override if needed */
+  .emoji-box { padding: 14px 6px; }
 }
-
-/* extra small: stack vertically (very narrow) */
-@media (max-width: 380px) {
-  .options-grid {
-    grid-template-columns: 1fr;
-  }
-  .emoji-box { padding: 12px; min-height: 64px; }
-}
-
-/* button size adjustments */
-#submitBtn { padding-top: 12px; padding-bottom: 12px; font-size: 16px; }
-
-/* success message spacing */
-#successMsg { font-size: 14px; }
-
-/* toast styles (used by script if any) */
-.toast { padding: 10px 14px; border-radius: 10px; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin-top: 8px; }
-
-/* spinner keyframes (if used) */
-@keyframes spin { to { transform: rotate(360deg); } }
