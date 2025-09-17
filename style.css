@@ -1,15 +1,41 @@
-/* Animated emoji active state */
-.emoji-option div {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease, background-color 0.2s ease;
-  border-radius: 1rem;
-  padding: 0.75rem;
+/* basics for emoji boxes */
+.emoji-box {
+  border-radius: 12px;
+  padding: 18px 8px;
   text-align: center;
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms, outline 220ms;
   cursor: pointer;
+  user-select: none;
 }
 
-.emoji-option input:checked + div,
-.emoji-option div.emoji-active {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  outline: 3px solid #1d4ed8;
+/* visually hide radio but keep accessible (sr-only class in Tailwind would do similar) */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* active when input:checked + div structure (but our input is sr-only inside label, not adjacent — JS ensures emoji-active) */
+/* fallback: support .emoji-active class which script sets */
+.emoji-box.emoji-active,
+.emoji-option input:checked + .emoji-box {
+  transform: translateY(-6px) scale(1.09);
+  box-shadow: 0 14px 30px rgba(2,6,23,0.12);
+  outline: 3px solid rgba(59,130,246,0.95); /* blue-500 */
+}
+
+/* keyboard focus style on label */
+.emoji-option:focus .emoji-box {
+  outline: 2px dashed rgba(59,130,246,0.5);
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* simple toast styling (script creates toasts inline) */
+.toast {
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  margin-top: 8px;
+}
+
+/* responsive spacing tweak */
+@media (max-width: 640px) {
+  .emoji-box { padding: 14px 6px; }
 }
