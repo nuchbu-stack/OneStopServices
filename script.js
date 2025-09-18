@@ -13,7 +13,6 @@ q1Options.forEach(opt => {
     opt.classList.add("active");
     q1Value = opt.dataset.value;
 
-    // Conditional Q2
     if (q1Value === "1" || q1Value === "2") {
       q2Section.classList.remove("hidden");
     } else {
