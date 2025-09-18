@@ -1,105 +1,74 @@
 body {
-  font-family: 'Noto Sans', sans-serif;
-  background: #f3f4f6;
-  display: flex;
-  justify-content: center;
-  padding: 2rem;
+  font-family: "Sarabun", sans-serif;
+  background: #f5f5f5;
+  padding: 20px;
 }
-
 .container {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 16px;
   max-width: 600px;
-  width: 100%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
-
 h1 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
-
 .question {
-  margin-bottom: 1.5rem;
-  line-height: 1.5rem;
+  margin-bottom: 20px;
 }
-
-label {
-  font-weight: 500;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
 .options {
   display: flex;
+  gap: 10px;
   justify-content: space-between;
-  gap: 0.5rem;
+  flex-wrap: nowrap;
 }
-
 .emoji-option {
   flex: 1;
 }
-
-.option {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0;
-  border-radius: 12px;
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  min-height: 80px;
-}
-
 .emoji-option input {
   display: none;
 }
-
+.option {
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.option:hover {
+  transform: scale(1.03);
+}
 .emoji-option input:checked + .option {
-  transform: translateY(-2px);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
+  transform: translateY(-2px) scale(1.05);
 }
 
-select, textarea {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-}
+/* สีพาสเทล */
+.bg-green { background-color: #A8E6CF; color: #2F855A;}
+.bg-lime { background-color: #D0F4DE; color: #276749;}
+.bg-yellow { background-color: #FFF5BA; color: #744210;}
+.bg-orange { background-color: #FFD3B6; color: #C05621;}
+.bg-red { background-color: #FFAAA5; color: #9B2C2C;}
 
 button {
-  background: #3b82f6;
-  color: #fff;
-  font-weight: 600;
-  padding: 0.75rem;
   width: 100%;
+  padding: 12px;
+  background: #3B82F6;
+  color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  font-weight: bold;
 }
-
 button:hover {
   opacity: 0.9;
 }
 
-.hidden {
-  display: none;
+textarea, select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
-
-#successMsg {
-  margin-top: 1rem;
-  text-align: center;
-  color: #16a34a;
-}
-
-/* สีพาสเทล */
-.bg-green { background: #a7f3d0; }
-.bg-lime { background: #d9f99d; }
-.bg-yellow { background: #fef08a; }
-.bg-orange { background: #fed7aa; }
-.bg-red { background: #fecaca; }

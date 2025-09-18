@@ -2,66 +2,64 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>แบบประเมินความพึงพอใจ</title>
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
   <div class="container">
     <h1>แบบประเมินความพึงพอใจ</h1>
 
-    <form id="surveyForm" class="survey-form">
+    <form id="surveyForm">
       <!-- คำถามระดับความพึงพอใจ -->
-      <div class="question q1">
+      <div class="question">
         <label>ระดับความพึงพอใจของท่าน</label>
         <div class="options">
           <label class="emoji-option">
             <input type="radio" name="q1" value="5" required>
-            <div class="option bg-green">😁<span>มากที่สุด</span></div>
+            <div class="option bg-green">😁 มากที่สุด</div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="4">
-            <div class="option bg-lime">😊<span>มาก</span></div>
+            <div class="option bg-lime">😊 มาก</div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="3">
-            <div class="option bg-yellow">😐<span>ปานกลาง</span></div>
+            <div class="option bg-yellow">😐 ปานกลาง</div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="2">
-            <div class="option bg-orange">😕<span>น้อย</span></div>
+            <div class="option bg-orange">😕 น้อย</div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="1">
-            <div class="option bg-red">😡<span>น้อยที่สุด</span></div>
+            <div class="option bg-red">😡 น้อยที่สุด</div>
           </label>
         </div>
       </div>
 
-      <!-- คำถามไม่พึงพอใจ (hidden by default) -->
-      <div class="question q2 hidden">
+      <!-- คำถามไม่พึงพอใจในเรื่องใด (ซ่อนเริ่มต้น) -->
+      <div class="question" id="q2-container" style="display:none;">
         <label>ท่านไม่พึงพอใจในเรื่องใด</label>
         <select name="q2" id="q2">
           <option value="ไม่มี">ไม่มี</option>
           <option value="การให้บริการของเจ้าหน้าที่">การให้บริการของเจ้าหน้าที่</option>
-          <option value="ความล่าช้า">ความล่าช้า (จากขั้นตอน / รอนาน)</option>
+          <option value="ความล่าช้า">ความล่าช้า</option>
           <option value="ความผิดพลาด/ความถูกต้อง">ความผิดพลาด/ความถูกต้อง</option>
           <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
         </select>
-        <input type="text" name="q2_other" id="q2_other" placeholder="โปรดระบุ..." class="hidden">
+        <input type="text" name="q2_other" id="q2_other" placeholder="โปรดระบุ..." style="display:none;">
       </div>
 
       <!-- ข้อเสนอแนะเพิ่มเติม -->
-      <div class="question q3">
+      <div class="question">
         <label>ข้อเสนอแนะเพิ่มเติม</label>
         <textarea name="q3" rows="3"></textarea>
       </div>
 
       <button type="submit">ส่งแบบประเมิน</button>
-      <p id="successMsg" class="hidden">บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม</p>
+      <p id="successMsg" style="display:none;">บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม</p>
     </form>
   </div>
-
-  <script src="script.js?v=1"></script>
 </body>
 </html>
