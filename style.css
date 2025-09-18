@@ -42,14 +42,20 @@ h1 {
   transition: all 0.3s;
   user-select: none;
   font-size: 16px;
-  color: #333;
   min-width: 80px;
-  background-color: #e0e0e0; /* สีพื้นเทาอ่อน */
+  color: #333;
 }
 
+/* พื้นสีตามระดับความพึงพอใจ */
+.option-5 { background-color: #c8e6c9; } /* เขียวอ่อน */
+.option-4 { background-color: #dcedc8; } /* เขียวเหลือง */
+.option-3 { background-color: #fff9c4; } /* เหลืองอ่อน */
+.option-2 { background-color: #ffe0b2; } /* ส้มอ่อน */
+.option-1 { background-color: #ffcdd2; } /* แดงอ่อน */
+
+/* active border สีเทา */
 .option.active {
-  border: 3px solid #9e9e9e; /* สีเทาเข้ม */
-  background-color: #bdbdbd; /* active เทา */
+  border: 3px solid #9e9e9e;
   transform: scale(1.05);
 }
 
