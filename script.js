@@ -5,7 +5,7 @@ const q2Select = document.getElementById("q2");
 const q2Other = document.getElementById("q2_other");
 const successMsg = document.getElementById("successMsg");
 
-// Show q2 only if q1 <= 2
+// แสดง q2 เฉพาะเมื่อเลือก <=2
 q1Radios.forEach(radio => {
   radio.addEventListener("change", () => {
     if (radio.value <= 2) {
@@ -20,7 +20,7 @@ q1Radios.forEach(radio => {
   });
 });
 
-// Show "other" input
+// แสดงช่อง Other
 q2Select.addEventListener("change", () => {
   if (q2Select.value === "อื่นๆ") {
     q2Other.classList.remove("hidden");
@@ -31,7 +31,7 @@ q2Select.addEventListener("change", () => {
   }
 });
 
-// Submit form
+// Submit
 form.addEventListener("submit", async e => {
   e.preventDefault();
 
@@ -45,7 +45,8 @@ form.addEventListener("submit", async e => {
   };
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec", {
+    // Clear cache by appending random query string
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + Date.now(), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data)
@@ -57,6 +58,8 @@ form.addEventListener("submit", async e => {
       form.reset();
       q2Div.classList.add("hidden");
       q2Other.classList.add("hidden");
+
+      // hide message after 3 sec
       setTimeout(() => {
         successMsg.classList.add("hidden");
       }, 3000);

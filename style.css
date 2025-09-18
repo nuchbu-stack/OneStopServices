@@ -51,7 +51,7 @@ label {
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  min-height: 80px; /* เท่ากันบนมือถือ */
+  min-height: 80px;
 }
 
 .emoji-option input {
