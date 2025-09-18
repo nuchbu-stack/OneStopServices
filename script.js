@@ -4,6 +4,9 @@ const q2Section = document.getElementById("q2Section");
 const q2Other = document.getElementById("q2Other");
 const responseMsg = document.getElementById("responseMsg");
 
+// กำหนด URL ของ Google Apps Script ไว้ในตัวแปรคงที่
+const GAS_URL = "https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec";
+
 let q1Value = "";
 let q2Value = "";
 
@@ -59,16 +62,19 @@ form.addEventListener("submit", async (e) => {
 
   let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value : q2Value;
 
-  const payload = new URLSearchParams({
+  const payload = {
     q1: q1Value,
     q2: finalQ2 || "",
     q3: document.getElementById("q3").value
-  });
+  };
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
+    const res = await fetch(GAS_URL + "?cachebust=" + new Date().getTime(), {
       method: "POST",
-      body: payload
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
     });
     const data = await res.json();
 
@@ -90,7 +96,7 @@ form.addEventListener("submit", async (e) => {
     responseMsg.classList.remove("hidden");
     console.error("Error submitting form:", err);
   } finally {
-    // เปิดการใช้งานปุ่มอีกครั้งและเปลี่ยนข้อความเป็น "ส่งแบบประเมิน"
+    // เปิดใช้งานปุ่มอีกครั้งเมื่อการทำงานเสร็จสิ้น
     submitButton.disabled = false;
     submitButton.textContent = "ส่งแบบประเมิน";
   }
