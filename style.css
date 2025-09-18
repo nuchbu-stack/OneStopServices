@@ -236,6 +236,48 @@ button:hover:not(:disabled) {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Layout ปกติ (Desktop/Tablet) */
+.options {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.option {
+  flex: 1;
+  text-align: center;
+  padding: 20px 0;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+  font-size: 20px;
+  min-width: 80px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Responsive: บนมือถือแสดงเป็นแนวนอน */
+@media (max-width: 600px) {
+  .options {
+    flex-wrap: nowrap;         /* ไม่ตัดบรรทัด */
+    justify-content: space-around;
+  }
+
+  .option {
+    flex: 0 1 auto;
+    font-size: 16px;
+    padding: 12px 0;
+    min-width: 55px;           /* ทำให้เล็กลง */
+  }
+
+  .option span {
+    font-size: 12px;
+  }
+}
+
+
 .options {
   display: flex;
   flex-direction: row;   /* เรียงแนวนอนเสมอ */
