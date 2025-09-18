@@ -160,46 +160,47 @@ button:hover {
 
 /* */ 
 
-.satisfaction-option input {
-  display: none; /* ซ่อนปุ่ม radio จริง */
+.satisfaction-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .satisfaction-option {
-  cursor: pointer;
-  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border-radius: 0.75rem;
   padding: 1rem;
+  cursor: pointer;
   transition: all 0.2s ease-in-out;
-  font-size: 1rem;
-  font-weight: 500;
-  background-color: #f3f4f6; /* พื้นหลังเริ่มต้น */
+  font-size: 0.95rem;
+  text-align: center;
 }
 
-.satisfaction-option .icon {
+.satisfaction-option input {
+  display: none; /* ซ่อน radio จริง */
+}
+
+.satisfaction-option .emoji {
   font-size: 2rem;
   margin-bottom: 0.25rem;
 }
 
-/* Active เมื่อถูกเลือก: ใช้ input:checked + div */
-.satisfaction-option input:checked + .icon,
-.satisfaction-option input:checked + .text {
-  font-weight: bold;
-  color: #1f2937;
-  transform: scale(1.1);
-}
+/* pastel background */
+.satisfaction-option.green { background-color: #bbf7d0; }   /* green-200 */
+.satisfaction-option.lime { background-color: #d9f99d; }    /* lime-200 */
+.satisfaction-option.yellow { background-color: #fef08a; }  /* yellow-200 */
+.satisfaction-option.orange { background-color: #fdba74; }  /* orange-300 */
+.satisfaction-option.red { background-color: #fecaca; }     /* red-200 */
 
-
-/* ไล่สีพื้นหลังพาสเทล */
-.satisfaction-option:nth-child(1) { background-color: #a7f3d0; }
-.satisfaction-option:nth-child(2) { background-color: #d9f99d; }
-.satisfaction-option:nth-child(3) { background-color: #fde68a; }
-.satisfaction-option:nth-child(4) { background-color: #fca5a5; }
-.satisfaction-option:nth-child(5) { background-color: #f87171; }
-
-/* Active state: เมื่อ radio ถูกเลือก ให้ style ทั้ง label */
-.satisfaction-option input:checked ~ .icon,
+/* Active state */
+.satisfaction-option input:checked ~ .emoji,
 .satisfaction-option input:checked ~ .text {
   font-weight: bold;
-  color: #1f2937;
-  transform: scale(1.1);
+  color: #111827;
+  transform: scale(1.2);
 }
+

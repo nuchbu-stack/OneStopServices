@@ -12,33 +12,48 @@
     <form id="surveyForm">
 
       <!-- Q1 -->
-<div class="satisfaction-row flex justify-between gap-2">
-  <label class="satisfaction-option flex-1">
-    <input type="radio" name="q1" value="5" required>
-    <div class="icon">😄</div>
-    <div class="text">มากที่สุด</div>
-  </label>
-  <label class="satisfaction-option flex-1">
-    <input type="radio" name="q1" value="4">
-    <div class="icon">😊</div>
-    <div class="text">มาก</div>
-  </label>
-  <label class="satisfaction-option flex-1">
-    <input type="radio" name="q1" value="3">
-    <div class="icon">😐</div>
-    <div class="text">ปานกลาง</div>
-  </label>
-  <label class="satisfaction-option flex-1">
-    <input type="radio" name="q1" value="2">
-    <div class="icon">🙁</div>
-    <div class="text">น้อย</div>
-  </label>
-  <label class="satisfaction-option flex-1">
-    <input type="radio" name="q1" value="1">
-    <div class="icon">😣</div>
-    <div class="text">น้อยที่สุด</div>
-  </label>
+<div class="question">
+  <label class="block mb-2 font-medium">ระดับความพึงพอใจของท่าน</label>
+  <div class="satisfaction-row">
+    
+    <!-- 5 -->
+    <label class="satisfaction-option green">
+      <input type="radio" name="q1" value="5" required>
+      <span class="emoji">😁</span>
+      <span class="text">มากที่สุด</span>
+    </label>
+
+    <!-- 4 -->
+    <label class="satisfaction-option lime">
+      <input type="radio" name="q1" value="4">
+      <span class="emoji">😊</span>
+      <span class="text">มาก</span>
+    </label>
+
+    <!-- 3 -->
+    <label class="satisfaction-option yellow">
+      <input type="radio" name="q1" value="3">
+      <span class="emoji">😐</span>
+      <span class="text">ปานกลาง</span>
+    </label>
+
+    <!-- 2 -->
+    <label class="satisfaction-option orange">
+      <input type="radio" name="q1" value="2">
+      <span class="emoji">😕</span>
+      <span class="text">น้อย</span>
+    </label>
+
+    <!-- 1 -->
+    <label class="satisfaction-option red">
+      <input type="radio" name="q1" value="1">
+      <span class="emoji">😡</span>
+      <span class="text">น้อยที่สุด</span>
+    </label>
+
+  </div>
 </div>
+
 
 
 
