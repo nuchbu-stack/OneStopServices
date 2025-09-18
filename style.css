@@ -69,7 +69,7 @@ h1 {
 
 /* Active border เทา */
 .option.active {
-  border: 3px solid #9e9e9e;
+  border: 3px solid #616161;
   transform: scale(1.07);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
@@ -93,21 +93,21 @@ button {
   padding: 16px;
   border: none;
   border-radius: 12px;
-  background: #9e9e9e;
+  background: #4CAF50; /* สีหลัก: เขียว */
   color: white;
   font-size: 17px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
 
-button:hover:not(:disabled) {
-  background: #757575;
-  transform: translateY(-2px);
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-button:disabled {
-  background: #ccc;
-  cursor: not-allowed;
+button:hover:not(:disabled) {
+  background: #388E3C;
+  transform: translateY(-2px);
 }
 
 .hidden { display: none; }
@@ -119,13 +119,15 @@ button:disabled {
   font-size: 15px;
 }
 
+/* สถานะข้อความ */
+#responseMsg.success { color: green; }
+#responseMsg.error { color: red; }
+
 @media (max-width: 480px){
   .options {
     flex-direction: column;
   }
 }
-
-/* ... (โค้ดอื่นคงเดิมทั้งหมด) ... */
 
 .radio-group {
   display: flex;

@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="แบบประเมินความพึงพอใจ - ช่วยเราปรับปรุงการบริการของเราโดยการตอบแบบสอบถามนี้">
   <title>Satisfaction Survey</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -11,35 +12,35 @@
     <h1>แบบประเมินความพึงพอใจ</h1>
     <form id="surveyForm">
 
+      <!-- Q1 -->
       <div class="question">
-        <p class="label">ระดับความพึงพอใจของท่าน</p>
+        <label class="label">ระดับความพึงพอใจของท่าน</label>
         <div class="options" id="q1Options">
-          <div class="option option-5" data-value="5">😁<br><span>มากที่สุด</span></div>
-          <div class="option option-4" data-value="4">😊<br><span>มาก</span></div>
-          <div class="option option-3" data-value="3">😐<br><span>ปานกลาง</span></div>
-          <div class="option option-2" data-value="2">😕<br><span>น้อย</span></div>
-          <div class="option option-1" data-value="1">😡<br><span>น้อยที่สุด</span></div>
+          <div class="option option-5" data-value="5" role="button" tabindex="0">😁<br><span>มากที่สุด</span></div>
+          <div class="option option-4" data-value="4" role="button" tabindex="0">😊<br><span>มาก</span></div>
+          <div class="option option-3" data-value="3" role="button" tabindex="0">😐<br><span>ปานกลาง</span></div>
+          <div class="option option-2" data-value="2" role="button" tabindex="0">😕<br><span>น้อย</span></div>
+          <div class="option option-1" data-value="1" role="button" tabindex="0">😡<br><span>น้อยที่สุด</span></div>
         </div>
       </div>
 
+      <!-- Q2 -->
+      <div class="question hidden" id="q2Section">
+        <label class="label">ท่านไม่พึงพอใจในเรื่องใด</label>
+        <div id="q2Options" class="radio-group">
+          <label><input type="radio" name="q2" value="คุณภาพการบริการ"> คุณภาพการบริการ</label>
+          <label><input type="radio" name="q2" value="ความรวดเร็ว"> ความรวดเร็ว</label>
+          <label><input type="radio" name="q2" value="ความสุภาพ"> ความสุภาพ</label>
+          <label class="inline-other">
+            <input type="radio" name="q2" value="อื่นๆ" id="q2OtherRadio"> อื่นๆ
+            <input type="text" id="q2Other" name="q2Other" class="hidden" placeholder="โปรดระบุ">
+          </label>
+        </div>
+      </div>
 
-
-<div class="question hidden" id="q2Section">
-  <p class="label">ท่านไม่พึงพอใจในเรื่องใด</p>
-  <div id="q2Options" class="radio-group">
-    <label><input type="radio" name="q2" value="คุณภาพการบริการ"> คุณภาพการบริการ</label>
-    <label><input type="radio" name="q2" value="ความรวดเร็ว"> ความรวดเร็ว</label>
-    <label><input type="radio" name="q2" value="ความสุภาพ"> ความสุภาพ</label>
-    <label class="inline-other">
-      <input type="radio" name="q2" value="อื่นๆ" id="q2OtherRadio"> อื่นๆ
-      <input type="text" id="q2Other" name="q2Other" class="hidden" placeholder="โปรดระบุ">
-    </label>
-  </div>
-</div>
-
-
+      <!-- Q3 -->
       <div class="question">
-        <p class="label">ข้อเสนอแนะเพิ่มเติม</p>
+        <label for="q3" class="label">ข้อเสนอแนะเพิ่มเติม</label>
         <textarea name="q3" id="q3" rows="3" placeholder="พิมพ์ข้อความเพิ่มเติมได้"></textarea>
       </div>
 

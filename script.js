@@ -3,9 +3,7 @@ const q1Options = document.querySelectorAll("#q1Options .option");
 const q2Section = document.getElementById("q2Section");
 const q2Other = document.getElementById("q2Other");
 const responseMsg = document.getElementById("responseMsg");
-
-// กำหนด URL ของ Google Apps Script ไว้ในตัวแปรคงที่
-const GAS_URL = "https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec";
+const submitBtn = form.querySelector("button");
 
 let q1Value = "";
 let q2Value = "";
@@ -44,44 +42,39 @@ document.querySelectorAll('input[name="q2"]').forEach(radio => {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  
-  const submitButton = form.querySelector('button[type="submit"]');
 
+  let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value.trim() : q2Value;
+
+  // Validate Q1
   if (!q1Value) {
-    responseMsg.textContent = "กรุณาเลือกระดับความพึงพอใจ";
-    responseMsg.style.color = "red";
-    responseMsg.classList.remove("hidden");
+    showMessage("กรุณาเลือกระดับความพึงพอใจ", "error");
     return;
   }
 
-  // แสดงสถานะ "กำลังบันทึก" และปิดการใช้งานปุ่ม
-  submitButton.disabled = true;
-  submitButton.textContent = "กำลังบันทึกข้อมูล...";
-  responseMsg.textContent = "";
-  responseMsg.classList.add("hidden");
+  // Validate Q2 "อื่นๆ"
+  if ((q1Value === "1" || q1Value === "2") && q2Value === "อื่นๆ" && !finalQ2) {
+    showMessage("กรุณาระบุรายละเอียดในช่อง 'อื่นๆ'", "error");
+    return;
+  }
 
-  let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value : q2Value;
-
-  const payload = {
+  const payload = new URLSearchParams({
     q1: q1Value,
     q2: finalQ2 || "",
     q3: document.getElementById("q3").value
-  };
+  });
+
+  responseMsg.className = "hidden";
+  submitBtn.disabled = true;
 
   try {
-    const res = await fetch(GAS_URL + "?cachebust=" + new Date().getTime(), {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(payload)
+      body: payload
     });
     const data = await res.json();
 
     if (data.status === "success") {
-      responseMsg.textContent = "บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม";
-      responseMsg.style.color = "green";
-      responseMsg.classList.remove("hidden");
+      showMessage("บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม", "success");
       form.reset();
       q1Options.forEach(o => o.classList.remove("active"));
       q1Value = "";
@@ -91,13 +84,15 @@ form.addEventListener("submit", async (e) => {
       throw new Error(data.message || "Unknown error");
     }
   } catch (err) {
-    responseMsg.textContent = "เกิดข้อผิดพลาดขณะบันทึก กรุณาลองใหม่";
-    responseMsg.style.color = "red";
-    responseMsg.classList.remove("hidden");
-    console.error("Error submitting form:", err);
+    showMessage("เกิดข้อผิดพลาดขณะบันทึก กรุณาลองใหม่", "error");
+    console.error(err);
   } finally {
-    // เปิดใช้งานปุ่มอีกครั้งเมื่อการทำงานเสร็จสิ้น
-    submitButton.disabled = false;
-    submitButton.textContent = "ส่งแบบประเมิน";
+    submitBtn.disabled = false;
   }
 });
+
+// Helper function
+function showMessage(msg, type) {
+  responseMsg.textContent = msg;
+  responseMsg.className = type; // success / error
+}
