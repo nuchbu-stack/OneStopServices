@@ -10,6 +10,7 @@ q1Radios.forEach(radio => {
   radio.addEventListener("change", () => {
     if (radio.value <= 2) {
       q2Div.classList.remove("hidden");
+      q2Div.parentNode.insertBefore(q2Div, document.querySelector(".q3"));
     } else {
       q2Div.classList.add("hidden");
       q2Select.value = "ไม่มี";

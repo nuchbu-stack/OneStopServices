@@ -22,6 +22,7 @@ h1 {
 
 .question {
   margin-bottom: 1.5rem;
+  line-height: 1.5rem;
 }
 
 label {
@@ -50,6 +51,7 @@ label {
   text-align: center;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
+  min-height: 80px; /* เท่ากันบนมือถือ */
 }
 
 .emoji-option input {
@@ -94,3 +96,10 @@ button:hover {
   text-align: center;
   color: #16a34a;
 }
+
+/* สีพาสเทล */
+.bg-green { background: #a7f3d0; }
+.bg-lime { background: #d9f99d; }
+.bg-yellow { background: #fef08a; }
+.bg-orange { background: #fed7aa; }
+.bg-red { background: #fecaca; }
