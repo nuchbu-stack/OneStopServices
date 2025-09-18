@@ -12,16 +12,37 @@
     <form id="surveyForm">
 
       <!-- Q1 -->
-      <div class="question">
-        <p class="label">ระดับความพึงพอใจของท่าน</p>
-        <div class="options" id="q1Options">
-          <div class="option option-5" data-value="5">😁<br><span>มากที่สุด</span></div>
-          <div class="option option-4" data-value="4">😊<br><span>มาก</span></div>
-          <div class="option option-3" data-value="3">😐<br><span>ปานกลาง</span></div>
-          <div class="option option-2" data-value="2">😕<br><span>น้อย</span></div>
-          <div class="option option-1" data-value="1">😡<br><span>น้อยที่สุด</span></div>
-        </div>
-      </div>
+<div class="question">
+  <label class="block text-lg font-semibold mb-3">ระดับความพึงพอใจของท่าน</label>
+  <div class="satisfaction-row flex justify-between gap-2">
+    <label class="satisfaction-option flex-1">
+      <input type="radio" name="q1" value="5" class="hidden" />
+      <div class="icon">😄</div>
+      <div class="text">มากที่สุด</div>
+    </label>
+    <label class="satisfaction-option flex-1">
+      <input type="radio" name="q1" value="4" class="hidden" />
+      <div class="icon">😊</div>
+      <div class="text">มาก</div>
+    </label>
+    <label class="satisfaction-option flex-1">
+      <input type="radio" name="q1" value="3" class="hidden" />
+      <div class="icon">😐</div>
+      <div class="text">ปานกลาง</div>
+    </label>
+    <label class="satisfaction-option flex-1">
+      <input type="radio" name="q1" value="2" class="hidden" />
+      <div class="icon">🙁</div>
+      <div class="text">น้อย</div>
+    </label>
+    <label class="satisfaction-option flex-1">
+      <input type="radio" name="q1" value="1" class="hidden" />
+      <div class="icon">😣</div>
+      <div class="text">น้อยที่สุด</div>
+    </label>
+  </div>
+</div>
+
 
 <!-- Q2 (radio style inline "อื่นๆ") -->
 <div class="question hidden" id="q2Section">
