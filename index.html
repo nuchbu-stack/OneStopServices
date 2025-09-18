@@ -2,68 +2,76 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>แบบประเมินความพึงพอใจ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แบบประเมินความพึงพอใจ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>แบบประเมินความพึงพอใจ</h1>
     <form id="surveyForm">
-      <!-- Q1: ระดับความพึงพอใจ -->
+      <!-- คำถามระดับความพึงพอใจ -->
       <div class="question">
-        <label>ระดับความพึงพอใจของท่าน</label>
         <div class="emoji-group">
           <label class="emoji-option">
             <input type="radio" name="q1" value="5" required>
-            <div class="emoji green"><span>😁</span><span class="label">มากที่สุด</span></div>
+            <div class="emoji pastel-green">
+              <span class="emoji-char">😁</span>
+              <span class="emoji-label">มากที่สุด</span>
+            </div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="4">
-            <div class="emoji lime"><span>😊</span><span class="label">มาก</span></div>
+            <div class="emoji pastel-lime">
+              <span class="emoji-char">😊</span>
+              <span class="emoji-label">มาก</span>
+            </div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="3">
-            <div class="emoji yellow"><span>😐</span><span class="label">ปานกลาง</span></div>
+            <div class="emoji pastel-yellow">
+              <span class="emoji-char">😐</span>
+              <span class="emoji-label">ปานกลาง</span>
+            </div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="2">
-            <div class="emoji orange"><span>😕</span><span class="label">น้อย</span></div>
+            <div class="emoji pastel-orange">
+              <span class="emoji-char">😕</span>
+              <span class="emoji-label">น้อย</span>
+            </div>
           </label>
           <label class="emoji-option">
             <input type="radio" name="q1" value="1">
-            <div class="emoji red"><span>😡</span><span class="label">น้อยที่สุด</span></div>
+            <div class="emoji pastel-red">
+              <span class="emoji-char">😡</span>
+              <span class="emoji-label">น้อยที่สุด</span>
+            </div>
           </label>
         </div>
       </div>
 
-      <!-- Q2: ไม่พึงพอใจ (conditional) -->
-      <div class="question" id="q2-container" style="display:none;">
-        <label>ท่านไม่พึงพอใจในเรื่องใด</label>
-        <select name="q2" id="q2">
+      <!-- ข้อเสนอแนะเพิ่มเติม -->
+      <div class="question">
+        <textarea name="q3" id="q3" rows="3" placeholder="ข้อเสนอแนะเพิ่มเติม (ถ้ามี)"></textarea>
+      </div>
+
+      <!-- คำถามไม่พึงพอใจ -->
+      <div class="question hidden" id="q2-container">
+        <select name="q2" id="q2" required>
           <option value="ไม่มี">ไม่มี</option>
           <option value="การให้บริการของเจ้าหน้าที่">การให้บริการของเจ้าหน้าที่</option>
-          <option value="ความล่าช้า">ความล่าช้า (จากขั้นตอน / รอนาน)</option>
+          <option value="ความล่าช้า">ความล่าช้า</option>
           <option value="ความผิดพลาด/ความถูกต้อง">ความผิดพลาด/ความถูกต้อง</option>
           <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
         </select>
-        <input type="text" id="q2-other" placeholder="โปรดระบุ..." style="display:none;">
-      </div>
-
-      <!-- Q3: ข้อเสนอแนะเพิ่มเติม -->
-      <div class="question">
-        <label>ข้อเสนอแนะเพิ่มเติม</label>
-        <textarea name="q3" rows="3" placeholder="ใส่ข้อความ..."></textarea>
+        <input type="text" name="q2_other" id="q2_other" placeholder="โปรดระบุ..." class="hidden">
       </div>
 
       <button type="submit">ส่งแบบประเมิน</button>
+      <p id="successMsg" class="success hidden">บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม</p>
     </form>
-
-    <div id="successMsg" class="success-msg" style="display:none;">
-      บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม
-    </div>
   </div>
-
   <script src="script.js"></script>
 </body>
 </html>
