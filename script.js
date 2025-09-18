@@ -12,7 +12,7 @@ q1Options.forEach(opt => {
     opt.classList.add("active");
     q1Value = opt.dataset.value;
 
-    // แสดง Q2 เฉพาะเมื่อเลือก 1 หรือ 2
+    // Conditional Q2
     if (q1Value === "1" || q1Value === "2") {
       q2Section.classList.remove("hidden");
     } else {
@@ -36,6 +36,13 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const q2Val = q2Select.value === "อื่นๆ" ? q2Other.value : q2Select.value;
 
+  if (!q1Value) {
+    responseMsg.textContent = "กรุณาเลือกระดับความพึงพอใจ";
+    responseMsg.style.color = "red";
+    responseMsg.classList.remove("hidden");
+    return;
+  }
+
   const payload = new URLSearchParams({
     q1: q1Value,
     q2: q2Val,
@@ -45,7 +52,7 @@ form.addEventListener("submit", async (e) => {
   responseMsg.classList.add("hidden");
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec", {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
       body: payload
     });

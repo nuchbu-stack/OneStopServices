@@ -26,6 +26,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .option {
@@ -37,6 +38,8 @@ h1 {
   transition: all 0.3s;
   user-select: none;
   font-size: 16px;
+  color: #333;
+  min-width: 80px;
 }
 
 .option.active {
@@ -73,4 +76,11 @@ button:hover {
   margin-top: 10px;
   text-align: center;
   font-weight: bold;
+}
+
+/* Responsive mobile */
+@media (max-width: 480px){
+  .options {
+    flex-direction: column;
+  }
 }
