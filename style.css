@@ -142,3 +142,18 @@ button:hover {
   font-size: 15px;
   width: 100%;
 }
+
+/* inline "อื่นๆ" */
+.inline-other {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inline-other input[type="text"] {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
