@@ -158,45 +158,6 @@ button:hover {
   font-size: 15px;
 }
 
-.satisfaction-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.satisfaction-option {
-  cursor: pointer;
-  text-align: center;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  transition: all 0.2s ease-in-out;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.satisfaction-option .icon {
-  font-size: 2rem;
-  margin-bottom: 0.25rem;
-}
-
-/* ไล่สีพาสเทลจากเขียว → แดง */
-.satisfaction-option:nth-child(1) { background-color: #a7f3d0; }
-.satisfaction-option:nth-child(2) { background-color: #d9f99d; }
-.satisfaction-option:nth-child(3) { background-color: #fde68a; }
-.satisfaction-option:nth-child(4) { background-color: #fca5a5; }
-.satisfaction-option:nth-child(5) { background-color: #f87171; }
-
-/* Active state */
-.satisfaction-option input:checked + .icon,
-.satisfaction-option input:checked + .text {
-  font-weight: bold;
-}
-
-.satisfaction-option input:checked ~ .icon,
-.satisfaction-option input:checked ~ .text {
-  color: #1f2937; /* สีเข้มขึ้นเมื่อ active */
-}
-
 .satisfaction-option input {
   display: none; /* ซ่อน radio */
 }
