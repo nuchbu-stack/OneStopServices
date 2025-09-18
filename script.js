@@ -6,6 +6,7 @@ const q2Other = document.getElementById("q2Other");
 const responseMsg = document.getElementById("responseMsg");
 
 let q1Value = "";
+
 q1Options.forEach(opt => {
   opt.addEventListener("click", () => {
     q1Options.forEach(o => o.classList.remove("active"));
