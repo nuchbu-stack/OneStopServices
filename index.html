@@ -3,49 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Stop Services Satisfaction Form</title>
-<link rel="stylesheet" href="style.css?v=1">
+<title>แบบสอบถามความพึงพอใจ</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-  <h1>แบบประเมินความพึงพอใจ</h1>
-  <form id="surveyForm">
-    <!-- คำถามระดับความพึงพอใจ -->
-    <div class="question">
-      <label>ระดับความพึงพอใจของท่าน</label>
-      <div class="rating">
-        <div class="option" data-value="5">😁<br>5</div>
-        <div class="option" data-value="4">🙂<br>4</div>
-        <div class="option" data-value="3">😐<br>3</div>
-        <div class="option" data-value="2">🙁<br>2</div>
-        <div class="option" data-value="1">😡<br>1</div>
+  <div class="container">
+    <h2>แบบสอบถามความพึงพอใจ</h2>
+    <form id="surveyForm" action="YOUR_WEB_APP_URL" method="POST" target="hidden_iframe">
+      
+      <!-- Q1 -->
+      <div class="question">
+        <label>ระดับความพึงพอใจของท่าน</label>
+        <div class="options">
+          <div class="option" data-value="5">5</div>
+          <div class="option" data-value="4">4</div>
+          <div class="option" data-value="3">3</div>
+          <div class="option" data-value="2">2</div>
+          <div class="option" data-value="1">1</div>
+        </div>
+        <input type="hidden" name="q1" id="q1">
       </div>
-      <input type="hidden" name="q1" id="q1">
-    </div>
 
-    <!-- คำถามไม่พึงพอใจ (ซ่อนเริ่มต้น) -->
-    <div class="question" id="q2Container" style="display:none">
-      <label>ท่านไม่พึงพอใจในเรื่องใด</label>
-      <div>
-        <label><input type="checkbox" name="q2" value="บริการช้า"> บริการช้า</label>
-        <label><input type="checkbox" name="q2" value="พนักงานไม่สุภาพ"> พนักงานไม่สุภาพ</label>
-        <label><input type="checkbox" name="q2" value="เอกสารไม่ครบ"> เอกสารไม่ครบ</label>
-        <label><input type="checkbox" name="q2" value="อื่นๆ" id="q2OtherCheck"> อื่นๆ (โปรดระบุ)</label>
-        <input type="text" name="q2Other" id="q2Other" style="display:none;" placeholder="โปรดระบุ">
+      <!-- Q2 -->
+      <div class="question hidden" id="q2-container">
+        <label>ท่านไม่พึงพอใจในเรื่องใด</label>
+        <textarea name="q2" id="q2" placeholder="โปรดระบุ"></textarea>
       </div>
+
+      <!-- Q3 -->
+      <div class="question">
+        <label>ข้อเสนอแนะเพิ่มเติม (ถ้ามี)</label>
+        <textarea name="q3" id="q3" placeholder="โปรดระบุ"></textarea>
+      </div>
+
+      <button type="submit">ส่งแบบสอบถาม</button>
+    </form>
+
+    <div id="confirmation" class="hidden">
+      ข้อมูลบันทึกเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม!
     </div>
+  </div>
 
-    <!-- ข้อเสนอแนะเพิ่มเติม -->
-    <div class="question">
-      <label>ข้อเสนอแนะเพิ่มเติม (ถ้ามี)</label>
-      <textarea name="q3" id="q3" rows="3" placeholder="โปรดกรอกข้อความ..."></textarea>
-    </div>
-
-    <button type="submit">ส่งแบบประเมิน</button>
-  </form>
-
-  <div id="message" class="message"></div>
-</div>
-<script src="script.js?v=1"></script>
+  <iframe name="hidden_iframe" style="display:none;"></iframe>
+  <script src="script.js"></script>
 </body>
 </html>
