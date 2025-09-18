@@ -61,7 +61,7 @@ textarea, select {
   border-radius: 12px;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  height: 80px; /* ความสูงเท่ากัน */
+  height: 80px;
 }
 
 .emoji-box span {

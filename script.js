@@ -18,7 +18,7 @@ q2Select.addEventListener('change', () => {
   }
 });
 
-// แสดงคำถามไม่พึงพอใจเฉพาะเมื่อเลือก 1 หรือ 2
+// แสดงคำถามไม่พึงพอใจก่อนข้อเสนอแนะเมื่อเลือก 1 หรือ 2
 document.querySelectorAll('input[name="q1"]').forEach(input => {
   input.addEventListener('change', () => {
     const value = parseInt(input.value);
@@ -37,7 +37,6 @@ form.addEventListener('submit', e => {
   e.preventDefault();
   const formData = new FormData(form);
 
-  // ถ้าเลือกอื่นๆ ให้เอา value จาก input
   if (formData.get('q2') === 'อื่นๆ') {
     formData.set('q2', q2Other.value);
   }
