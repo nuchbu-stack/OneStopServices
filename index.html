@@ -1,51 +1,96 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Stop Services Satisfaction Form</title>
-<link rel="stylesheet" href="style.css?v=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>แบบประเมินความพึงพอใจ</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css?v=20250918-2">
 </head>
-<body>
-<div class="container">
-  <h1>แบบประเมินความพึงพอใจ</h1>
-  <form id="surveyForm">
-    <!-- คำถามระดับความพึงพอใจ -->
-    <div class="question">
-      <label>ระดับความพึงพอใจของท่าน</label>
-      <div class="rating">
-        <div class="option" data-value="5">😁<br>5</div>
-        <div class="option" data-value="4">🙂<br>4</div>
-        <div class="option" data-value="3">😐<br>3</div>
-        <div class="option" data-value="2">🙁<br>2</div>
-        <div class="option" data-value="1">😡<br>1</div>
-      </div>
-      <input type="hidden" name="q1" id="q1">
-    </div>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-3xl bg-white rounded-2xl shadow-lg p-5 sm:p-6">
+    <h1 class="text-center text-xl sm:text-2xl font-bold mb-4">แบบประเมินความพึงพอใจ</h1>
 
-    <!-- คำถามไม่พึงพอใจ (ซ่อนเริ่มต้น) -->
-    <div class="question" id="q2Container" style="display:none">
-      <label>ท่านไม่พึงพอใจในเรื่องใด</label>
+    <form id="surveyForm" class="space-y-4">
+      <!-- Q1: rating (5 -> 1) -->
       <div>
-        <label><input type="checkbox" name="q2" value="บริการช้า"> บริการช้า</label>
-        <label><input type="checkbox" name="q2" value="พนักงานไม่สุภาพ"> พนักงานไม่สุภาพ</label>
-        <label><input type="checkbox" name="q2" value="เอกสารไม่ครบ"> เอกสารไม่ครบ</label>
-        <label><input type="checkbox" name="q2" value="อื่นๆ" id="q2OtherCheck"> อื่นๆ (โปรดระบุ)</label>
-        <input type="text" name="q2Other" id="q2Other" style="display:none;" placeholder="โปรดระบุ">
+        <label class="block mb-2 font-medium">1. ระดับความพึงพอใจของท่าน</label>
+        <div class="rating-options" role="radiogroup" aria-label="ระดับความพึงพอใจ">
+          <!-- 5 -->
+          <label class="emoji-option" tabindex="0" data-value="5" aria-checked="false">
+            <input type="radio" name="q1" value="5" class="sr-only" required>
+            <div class="emoji-box bg-green-500 text-white">
+              <div class="emoji text-3xl">😁</div>
+              <div class="label text-xs sm:text-sm mt-1">มากที่สุด</div>
+            </div>
+          </label>
+
+          <!-- 4 -->
+          <label class="emoji-option" tabindex="0" data-value="4" aria-checked="false">
+            <input type="radio" name="q1" value="4" class="sr-only">
+            <div class="emoji-box bg-lime-500 text-white">
+              <div class="emoji text-3xl">😊</div>
+              <div class="label text-xs sm:text-sm mt-1">มาก</div>
+            </div>
+          </label>
+
+          <!-- 3 -->
+          <label class="emoji-option" tabindex="0" data-value="3" aria-checked="false">
+            <input type="radio" name="q1" value="3" class="sr-only">
+            <div class="emoji-box bg-yellow-300 text-black">
+              <div class="emoji text-3xl">😐</div>
+              <div class="label text-xs sm:text-sm mt-1">ปานกลาง</div>
+            </div>
+          </label>
+
+          <!-- 2 -->
+          <label class="emoji-option" tabindex="0" data-value="2" aria-checked="false">
+            <input type="radio" name="q1" value="2" class="sr-only">
+            <div class="emoji-box bg-orange-400 text-white">
+              <div class="emoji text-3xl">😕</div>
+              <div class="label text-xs sm:text-sm mt-1">น้อย</div>
+            </div>
+          </label>
+
+          <!-- 1 -->
+          <label class="emoji-option" tabindex="0" data-value="1" aria-checked="false">
+            <input type="radio" name="q1" value="1" class="sr-only">
+            <div class="emoji-box bg-red-500 text-white">
+              <div class="emoji text-3xl">😡</div>
+              <div class="label text-xs sm:text-sm mt-1">น้อยที่สุด</div>
+            </div>
+          </label>
+        </div>
       </div>
+
+      <!-- Q2 -->
+      <div>
+        <label class="block mb-2 font-medium">2. ท่านไม่พึงพอใจในเรื่องใด</label>
+        <select id="q2" name="q2" class="w-full p-3 rounded border">
+          <option value="ไม่มี">ไม่มี</option>
+          <option value="การให้บริการของเจ้าหน้าที่">การให้บริการของเจ้าหน้าที่</option>
+          <option value="ความล่าช้า">ความล่าช้า (จากขั้นตอน / รอนาน)</option>
+          <option value="ความผิดพลาด/ความถูกต้อง">ความผิดพลาด/ความถูกต้อง - ความถูกต้อง / ไม่ชัดเจน</option>
+          <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
+        </select>
+        <input id="q2_other" name="q2_other" class="w-full mt-2 p-3 border rounded hidden" placeholder="โปรดระบุ..." />
+      </div>
+
+      <!-- Q3 -->
+      <div>
+        <label class="block mb-2 font-medium">3. ข้อเสนอแนะเพิ่มเติม</label>
+        <textarea name="q3" rows="3" class="w-full p-3 rounded border"></textarea>
+      </div>
+
+      <button id="submitBtn" type="submit" class="w-full py-3 rounded bg-blue-600 text-white font-medium flex items-center justify-center">ส่งแบบประเมิน</button>
+    </form>
+
+    <div id="successMsg" class="hidden mt-4 text-center text-green-700 bg-green-50 border border-green-200 rounded p-3">
+      บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม
     </div>
+  </div>
 
-    <!-- ข้อเสนอแนะเพิ่มเติม -->
-    <div class="question">
-      <label>ข้อเสนอแนะเพิ่มเติม (ถ้ามี)</label>
-      <textarea name="q3" id="q3" rows="3" placeholder="โปรดกรอกข้อความ..."></textarea>
-    </div>
-
-    <button type="submit">ส่งแบบประเมิน</button>
-  </form>
-
-  <div id="message" class="message"></div>
-</div>
-<script src="script.js?v=1"></script>
+  <script src="script.js?v=20250918-2"></script>
 </body>
 </html>
