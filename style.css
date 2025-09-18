@@ -119,3 +119,26 @@ button:hover {
     flex-direction: column;
   }
 }
+
+/* ... (โค้ดอื่นคงเดิมทั้งหมด) ... */
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.radio-group label {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.radio-group input[type="text"] {
+  margin-top: 8px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  width: 100%;
+}

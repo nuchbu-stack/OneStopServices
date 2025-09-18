@@ -23,17 +23,16 @@
         </div>
       </div>
 
-      <!-- Q2 -->
+      <!-- Q2 (radio style) -->
       <div class="question hidden" id="q2Section">
         <p class="label">ท่านไม่พึงพอใจในเรื่องใด</p>
-        <select id="q2" name="q2">
-          <option value="">เลือก</option>
-          <option value="คุณภาพการบริการ">คุณภาพการบริการ</option>
-          <option value="ความรวดเร็ว">ความรวดเร็ว</option>
-          <option value="ความสุภาพ">ความสุภาพ</option>
-          <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
-        </select>
-        <input type="text" id="q2Other" name="q2Other" class="hidden" placeholder="โปรดระบุ">
+        <div id="q2Options" class="radio-group">
+          <label><input type="radio" name="q2" value="คุณภาพการบริการ"> คุณภาพการบริการ</label>
+          <label><input type="radio" name="q2" value="ความรวดเร็ว"> ความรวดเร็ว</label>
+          <label><input type="radio" name="q2" value="ความสุภาพ"> ความสุภาพ</label>
+          <label><input type="radio" name="q2" value="อื่นๆ" id="q2OtherRadio"> อื่นๆ</label>
+          <input type="text" id="q2Other" name="q2Other" class="hidden" placeholder="โปรดระบุ">
+        </div>
       </div>
 
       <!-- Q3 -->

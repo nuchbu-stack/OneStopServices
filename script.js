@@ -1,12 +1,13 @@
 const form = document.getElementById("surveyForm");
 const q1Options = document.querySelectorAll("#q1Options .option");
 const q2Section = document.getElementById("q2Section");
-const q2Select = document.getElementById("q2");
 const q2Other = document.getElementById("q2Other");
 const responseMsg = document.getElementById("responseMsg");
 
 let q1Value = "";
+let q2Value = "";
 
+// Q1 logic
 q1Options.forEach(opt => {
   opt.addEventListener("click", () => {
     q1Options.forEach(o => o.classList.remove("active"));
@@ -17,24 +18,30 @@ q1Options.forEach(opt => {
       q2Section.classList.remove("hidden");
     } else {
       q2Section.classList.add("hidden");
-      q2Select.value = "";
+      q2Value = "";
       q2Other.value = "";
       q2Other.classList.add("hidden");
+      document.querySelectorAll('input[name="q2"]').forEach(r => r.checked = false);
     }
   });
 });
 
-q2Select.addEventListener("change", () => {
-  if (q2Select.value === "อื่นๆ") {
-    q2Other.classList.remove("hidden");
-  } else {
-    q2Other.classList.add("hidden");
-  }
+// Q2 logic
+document.querySelectorAll('input[name="q2"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    if (radio.value === "อื่นๆ") {
+      q2Other.classList.remove("hidden");
+    } else {
+      q2Other.classList.add("hidden");
+      q2Other.value = "";
+    }
+    q2Value = radio.value;
+  });
 });
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const q2Val = q2Select.value === "อื่นๆ" ? q2Other.value : q2Select.value;
+  let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value : q2Value;
 
   if (!q1Value) {
     responseMsg.textContent = "กรุณาเลือกระดับความพึงพอใจ";
@@ -45,7 +52,7 @@ form.addEventListener("submit", async (e) => {
 
   const payload = new URLSearchParams({
     q1: q1Value,
-    q2: q2Val,
+    q2: finalQ2 || "",
     q3: document.getElementById("q3").value
   });
 
