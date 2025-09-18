@@ -165,51 +165,23 @@ button:hover:not(:disabled) {
   font-size: 15px;
 }
 
-/* เดิมคงไว้ทั้งหมด ด้านล่างนี้คือส่วนปรับ responsive เพิ่มเติม */
 
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
-    border-radius: 12px;
-  }
-
-  h1 {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .options {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .option {
-    flex: 0 1 calc(50% - 10px); /* 2 คอลัมน์ */
-    min-width: 120px;
-    font-size: 18px;
-    padding: 15px 0;
-  }
-
-  .option span {
-    font-size: 13px;
-  }
-
-  textarea {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  button {
-    font-size: 15px;
-    padding: 14px;
-  }
+.options {
+  display: flex;
+  flex-direction: column; /* แสดงเป็นคอลัมน์เดียวเสมอ */
+  gap: 12px;
 }
 
-@media (max-width: 400px) {
-  .option {
-    flex: 1 1 100%; /* ให้เรียงแถวเดียวถ้าจอเล็กมาก */
-    min-width: auto;
-  }
+.option {
+  width: 100%;             /* กินเต็มความกว้าง container */
+  text-align: center;
+  padding: 15px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+  font-size: 18px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
+
