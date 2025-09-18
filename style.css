@@ -10,7 +10,7 @@ body {
   margin: 40px auto;
   background: #fff;
   padding: 24px;
-  border-radius: 12px;
+  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
@@ -23,72 +23,82 @@ h1 {
   margin-bottom: 24px;
 }
 
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
 .emoji-group {
   display: flex;
   justify-content: space-between;
-  gap: 6px;
+  gap: 8px;
   flex-wrap: nowrap;
-}
-
-.emoji-option {
-  flex: 1;
-  text-align: center;
-  cursor: pointer;
 }
 
 .emoji-option input {
   display: none;
 }
 
-.emoji-icon {
-  font-size: 2rem;
+.emoji {
+  flex: 1;
   padding: 12px 0;
   border-radius: 12px;
-  margin-bottom: 6px;
+  text-align: center;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.emoji-option input:checked + .emoji-icon {
-  outline: 3px solid #1d4ed8;
-  box-shadow: 0 0 0 4px rgba(29,78,216,0.2);
-  transform: translateY(-2px) scale(1.05);
-}
-
-.emoji-label {
+.emoji span.label {
   display: block;
-}
-
-textarea, select, input[type=text] {
-  width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  margin-top: 4px;
   font-size: 14px;
 }
 
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: none;
-  background: #3b82f6;
-  color: #fff;
-  cursor: pointer;
-  transition: opacity 0.2s;
+.emoji.green { background-color: #22c55e; color: #fff; }
+.emoji.lime { background-color: #a3e635; color: #000; }
+.emoji.yellow { background-color: #fde68a; color: #000; }
+.emoji.orange { background-color: #f97316; color: #fff; }
+.emoji.red { background-color: #ef4444; color: #fff; }
+
+.emoji-option input:checked + .emoji {
+  outline: 3px solid #2563eb;
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.2);
+  transform: translateY(-2px) scale(1.03);
 }
 
-.submit-btn:hover {
+select, input[type="text"], textarea, button {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+button {
+  background: #2563eb;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  transition: 0.2s;
+}
+
+button:hover {
   opacity: 0.9;
 }
 
-.hidden {
-  display: none;
-}
-
 .success-msg {
-  margin-top: 16px;
   text-align: center;
+  margin-top: 16px;
   font-weight: bold;
   color: #16a34a;
+}
+
+/* responsive */
+@media (max-width: 480px) {
+  .emoji-group {
+    flex-wrap: nowrap;
+  }
 }
