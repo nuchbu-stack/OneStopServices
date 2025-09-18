@@ -3,48 +3,49 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แบบสอบถามความพึงพอใจ</title>
+<title>แบบประเมินความพึงพอใจ</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h2>แบบสอบถามความพึงพอใจ</h2>
-    <form id="surveyForm" action="YOUR_WEB_APP_URL" method="POST" target="hidden_iframe">
-      
-      <!-- Q1 -->
-      <div class="question">
-        <label>ระดับความพึงพอใจของท่าน</label>
-        <div class="options">
-          <div class="option" data-value="5">5</div>
-          <div class="option" data-value="4">4</div>
-          <div class="option" data-value="3">3</div>
-          <div class="option" data-value="2">2</div>
-          <div class="option" data-value="1">1</div>
-        </div>
-        <input type="hidden" name="q1" id="q1">
+<div class="container">
+  <h1 class="title">แบบประเมินความพึงพอใจ</h1>
+  <form id="surveyForm">
+    <!-- Question 1: Satisfaction Level -->
+    <div class="question-block">
+      <p class="question-text">ระดับความพึงพอใจของท่าน</p>
+      <div class="options" id="q1-options">
+        <div class="option" data-value="5">5</div>
+        <div class="option" data-value="4">4</div>
+        <div class="option" data-value="3">3</div>
+        <div class="option" data-value="2">2</div>
+        <div class="option" data-value="1">1</div>
       </div>
-
-      <!-- Q2 -->
-      <div class="question hidden" id="q2-container">
-        <label>ท่านไม่พึงพอใจในเรื่องใด</label>
-        <textarea name="q2" id="q2" placeholder="โปรดระบุ"></textarea>
-      </div>
-
-      <!-- Q3 -->
-      <div class="question">
-        <label>ข้อเสนอแนะเพิ่มเติม (ถ้ามี)</label>
-        <textarea name="q3" id="q3" placeholder="โปรดระบุ"></textarea>
-      </div>
-
-      <button type="submit">ส่งแบบสอบถาม</button>
-    </form>
-
-    <div id="confirmation" class="hidden">
-      ข้อมูลบันทึกเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม!
     </div>
-  </div>
 
-  <iframe name="hidden_iframe" style="display:none;"></iframe>
-  <script src="script.js"></script>
+    <!-- Conditional Question -->
+    <div class="question-block hidden" id="q2-block">
+      <p class="question-text">ท่านไม่พึงพอใจในเรื่องใด</p>
+      <div class="options" id="q2-options">
+        <div class="option" data-value="บริการช้า">บริการช้า</div>
+        <div class="option" data-value="ไม่สะดวก">ไม่สะดวก</div>
+        <div class="option" data-value="พนักงานไม่ช่วยเหลือ">พนักงานไม่ช่วยเหลือ</div>
+        <div class="option" data-value="อื่นๆ" id="q2-other">อื่นๆ (โปรดระบุ)</div>
+      </div>
+      <input type="text" class="hidden" id="q2-other-text" placeholder="โปรดระบุ">
+    </div>
+
+    <!-- Feedback -->
+    <div class="question-block">
+      <p class="question-text">ข้อเสนอแนะเพิ่มเติม</p>
+      <textarea id="q3" placeholder="พิมพ์ข้อเสนอแนะเพิ่มเติม (ถ้ามี)"></textarea>
+    </div>
+
+    <button type="submit">ส่งแบบประเมิน</button>
+    <div id="confirmation" class="hidden">บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม!</div>
+  </form>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
+
