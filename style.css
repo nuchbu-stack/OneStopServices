@@ -158,8 +158,10 @@ button:hover {
   font-size: 15px;
 }
 
+/* */ 
+
 .satisfaction-option input {
-  display: none; /* ซ่อน radio */
+  display: none; /* ซ่อนปุ่ม radio จริง */
 }
 
 .satisfaction-option {
@@ -170,12 +172,22 @@ button:hover {
   transition: all 0.2s ease-in-out;
   font-size: 1rem;
   font-weight: 500;
+  background-color: #f3f4f6; /* พื้นหลังเริ่มต้น */
 }
 
 .satisfaction-option .icon {
   font-size: 2rem;
   margin-bottom: 0.25rem;
 }
+
+/* Active เมื่อถูกเลือก: ใช้ input:checked + div */
+.satisfaction-option input:checked + .icon,
+.satisfaction-option input:checked + .text {
+  font-weight: bold;
+  color: #1f2937;
+  transform: scale(1.1);
+}
+
 
 /* ไล่สีพื้นหลังพาสเทล */
 .satisfaction-option:nth-child(1) { background-color: #a7f3d0; }
