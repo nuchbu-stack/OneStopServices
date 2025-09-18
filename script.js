@@ -5,7 +5,6 @@ const q2Select = document.getElementById("q2");
 const q2Other = document.getElementById("q2Other");
 const responseMsg = document.getElementById("responseMsg");
 
-// เลือกระดับความพึงพอใจ
 let q1Value = "";
 q1Options.forEach(opt => {
   opt.addEventListener("click", () => {
@@ -13,7 +12,7 @@ q1Options.forEach(opt => {
     opt.classList.add("active");
     q1Value = opt.dataset.value;
 
-    // เงื่อนไข: ถ้า 1 หรือ 2 ให้โชว์ Q2
+    // แสดง Q2 เฉพาะเมื่อเลือก 1 หรือ 2
     if (q1Value === "1" || q1Value === "2") {
       q2Section.classList.remove("hidden");
     } else {
@@ -25,7 +24,6 @@ q1Options.forEach(opt => {
   });
 });
 
-// Q2 เลือก Other
 q2Select.addEventListener("change", () => {
   if (q2Select.value === "อื่นๆ") {
     q2Other.classList.remove("hidden");
@@ -34,7 +32,6 @@ q2Select.addEventListener("change", () => {
   }
 });
 
-// ส่งฟอร์ม
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const q2Val = q2Select.value === "อื่นๆ" ? q2Other.value : q2Select.value;

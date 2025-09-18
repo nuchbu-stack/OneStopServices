@@ -31,17 +31,25 @@ h1 {
 .option {
   flex: 1;
   text-align: center;
-  padding: 10px;
-  border-radius: 8px;
-  background: #e0f7fa;
+  padding: 15px 0;
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s;
   user-select: none;
+  font-size: 16px;
 }
 
 .option.active {
-  border: 2px solid #00796b;
-  background: #b2dfdb;
+  border: 3px solid #555;
+  transform: scale(1.05);
+}
+
+select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
 }
 
 button {
