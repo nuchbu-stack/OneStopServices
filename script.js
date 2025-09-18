@@ -13,7 +13,6 @@ q1Options.forEach(opt => {
     opt.classList.add("active");
     q1Value = opt.dataset.value;
 
-    // แสดง Q2 เฉพาะ 1-2
     if (q1Value === "1" || q1Value === "2") {
       q2Section.classList.remove("hidden");
     } else {
@@ -68,3 +67,13 @@ form.addEventListener("submit", async (e) => {
       q1Value = "";
       q2Section.classList.add("hidden");
       q2Other.classList.add("hidden");
+    } else {
+      throw new Error(data.message || "Unknown error");
+    }
+  } catch (err) {
+    responseMsg.textContent = "เกิดข้อผิดพลาดขณะบันทึก กรุณาลองใหม่";
+    responseMsg.style.color = "red";
+    responseMsg.classList.remove("hidden");
+    console.error(err);
+  }
+});
