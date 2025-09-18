@@ -44,14 +44,6 @@ document.querySelectorAll('input[name="q2"]').forEach(radio => {
   });
 });
 
-// Clear response after delay
-function clearResponseMsg() {
-  setTimeout(() => {
-    responseMsg.classList.add("hidden");
-    responseMsg.textContent = "";
-  }, 5000);
-}
-
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -61,7 +53,6 @@ form.addEventListener("submit", async (e) => {
     responseMsg.textContent = "กรุณาเลือกระดับความพึงพอใจ";
     responseMsg.style.color = "red";
     responseMsg.classList.remove("hidden");
-    clearResponseMsg();
     return;
   }
 
@@ -69,25 +60,23 @@ form.addEventListener("submit", async (e) => {
     responseMsg.textContent = "กรุณาระบุสาเหตุที่ไม่พึงพอใจ";
     responseMsg.style.color = "red";
     responseMsg.classList.remove("hidden");
-    clearResponseMsg();
     return;
   }
 
-  const payload = {
+  const payload = new URLSearchParams({
     q1: q1Value,
     q2: finalQ2 || "",
     q3: document.getElementById("q3").value.trim()
-  };
+  });
 
   responseMsg.classList.add("hidden");
   submitBtn.disabled = true;
   submitBtn.textContent = "กำลังบันทึก...";
 
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec", {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
+      body: payload
     });
 
     const data = await res.json();
@@ -116,6 +105,5 @@ form.addEventListener("submit", async (e) => {
   } finally {
     submitBtn.disabled = false;
     submitBtn.textContent = "ส่งแบบประเมิน";
-    clearResponseMsg();
   }
 });
