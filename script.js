@@ -44,8 +44,6 @@ form.addEventListener("submit", async (e) => {
   
   const submitButton = form.querySelector('button[type="submit"]');
 
-  let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value : q2Value;
-
   if (!q1Value) {
     responseMsg.textContent = "กรุณาเลือกระดับความพึงพอใจ";
     responseMsg.style.color = "red";
@@ -53,10 +51,13 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  // ปิดการใช้งานปุ่มเพื่อป้องกันการส่งซ้ำ
+  // แสดงสถานะ "กำลังบันทึก" และปิดการใช้งานปุ่ม
   submitButton.disabled = true;
-  submitButton.textContent = "กำลังส่ง...";
+  submitButton.textContent = "กำลังบันทึกข้อมูล...";
+  responseMsg.textContent = "";
   responseMsg.classList.add("hidden");
+
+  let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value : q2Value;
 
   const payload = new URLSearchParams({
     q1: q1Value,
@@ -89,7 +90,7 @@ form.addEventListener("submit", async (e) => {
     responseMsg.classList.remove("hidden");
     console.error("Error submitting form:", err);
   } finally {
-    // เปิดใช้งานปุ่มอีกครั้งเมื่อการทำงานเสร็จสิ้น
+    // เปิดการใช้งานปุ่มอีกครั้งและเปลี่ยนข้อความเป็น "ส่งแบบประเมิน"
     submitButton.disabled = false;
     submitButton.textContent = "ส่งแบบประเมิน";
   }
