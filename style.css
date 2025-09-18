@@ -1,74 +1,87 @@
 body {
-  font-family: "Sarabun", sans-serif;
+  font-family: 'Arial', sans-serif;
   background: #f5f5f5;
+  display: flex;
+  justify-content: center;
   padding: 20px;
 }
+
 .container {
-  max-width: 600px;
-  margin: auto;
-  background: white;
+  background: #fff;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  border-radius: 15px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
+
 h1 {
   text-align: center;
   margin-bottom: 20px;
 }
+
 .question {
   margin-bottom: 20px;
 }
-.options {
+
+.emoji-options {
   display: flex;
-  gap: 10px;
   justify-content: space-between;
-  flex-wrap: nowrap;
+  gap: 10px;
 }
-.emoji-option {
-  flex: 1;
-}
+
 .emoji-option input {
   display: none;
 }
-.option {
-  padding: 15px;
-  border-radius: 12px;
+
+.emoji-box {
   text-align: center;
+  padding: 15px 5px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.option:hover {
-  transform: scale(1.03);
+
+.emoji-box span {
+  margin-top: 5px;
 }
-.emoji-option input:checked + .option {
+
+/* สีตามระดับ */
+.green { background:#a3e635; color:#fff; }
+.lightgreen { background:#bef264; color:#fff; }
+.yellow { background:#fde68a; color:#000; }
+.orange { background:#fb923c; color:#fff; }
+.red { background:#f87171; color:#fff; }
+
+/* active state */
+.emoji-option input:checked + .emoji-box {
+  transform: scale(1.05);
   box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-  transform: translateY(-2px) scale(1.05);
 }
 
-/* สีพาสเทล */
-.bg-green { background-color: #A8E6CF; color: #2F855A;}
-.bg-lime { background-color: #D0F4DE; color: #276749;}
-.bg-yellow { background-color: #FFF5BA; color: #744210;}
-.bg-orange { background-color: #FFD3B6; color: #C05621;}
-.bg-red { background-color: #FFAAA5; color: #9B2C2C;}
-
+/* ปุ่มส่ง */
 button {
-  width: 100%;
-  padding: 12px;
-  background: #3B82F6;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  background: #3b82f6;
+  color: #fff;
   font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s ease;
 }
+
 button:hover {
   opacity: 0.9;
 }
 
-textarea, select {
-  width: 100%;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.success-msg {
+  text-align: center;
+  color: green;
+  margin-top: 10px;
+  font-weight: bold;
 }
