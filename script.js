@@ -62,7 +62,7 @@ form.addEventListener('submit', async e => {
   payload.append('cachebust', Date.now());
 
   try {
-    const response = await fetch('https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec', {
+    await fetch('https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec', {
       method: 'POST',
       body: payload,
       mode: 'no-cors'
@@ -70,9 +70,7 @@ form.addEventListener('submit', async e => {
 
     // Show confirmation & reset
     confirmation.classList.remove('hidden');
-    setTimeout(() => {
-      confirmation.classList.add('hidden');
-    }, 3000);
+    setTimeout(() => confirmation.classList.add('hidden'), 3000);
 
     form.reset();
     q1Options.forEach(o => o.classList.remove('active'));
