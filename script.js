@@ -1,69 +1,69 @@
 const form = document.getElementById("surveyForm");
 const q1Radios = document.getElementsByName("q1");
-const q2Container = document.getElementById("q2-container");
+const q2Div = document.querySelector(".q2");
 const q2Select = document.getElementById("q2");
 const q2Other = document.getElementById("q2_other");
 const successMsg = document.getElementById("successMsg");
 
-// แสดงคำถาม "ไม่พึงพอใจ" เฉพาะเมื่อเลือก 2 หรือ 1
+// Show q2 only if q1 <= 2
 q1Radios.forEach(radio => {
   radio.addEventListener("change", () => {
-    const val = radio.value;
-    if (val === "1" || val === "2") {
-      q2Container.style.display = "block";
+    if (radio.value <= 2) {
+      q2Div.classList.remove("hidden");
     } else {
-      q2Container.style.display = "none";
-      q2Other.style.display = "none";
+      q2Div.classList.add("hidden");
+      q2Select.value = "ไม่มี";
+      q2Other.value = "";
+      q2Other.classList.add("hidden");
     }
   });
 });
 
-// แสดงช่องโปรดระบุเมื่อเลือก "อื่นๆ"
-q2Select.addEventListener("change", function() {
-  if (this.value === "อื่นๆ") {
-    q2Other.style.display = "block";
+// Show "other" input
+q2Select.addEventListener("change", () => {
+  if (q2Select.value === "อื่นๆ") {
+    q2Other.classList.remove("hidden");
     q2Other.required = true;
   } else {
-    q2Other.style.display = "none";
+    q2Other.classList.add("hidden");
     q2Other.required = false;
   }
 });
 
-// ส่งฟอร์มไป Apps Script
-form.addEventListener("submit", function(e) {
+// Submit form
+form.addEventListener("submit", async e => {
   e.preventDefault();
 
-  let q2Val = q2Select.value;
-  if (q2Val === "อื่นๆ") {
-    q2Val = q2Other.value;
-  }
+  let q2Value = q2Select.value;
+  if (q2Value === "อื่นๆ") q2Value = q2Other.value;
 
   const data = {
     q1: form.q1.value,
-    q2: q2Val,
+    q2: q2Value,
     q3: form.q3.value
   };
 
-  fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec", { // <-- แก้เป็น URL ของ Apps Script
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(res => {
-    if (res.status === "success") {
-      successMsg.style.display = "block";
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+    if (result.status === "success") {
+      successMsg.classList.remove("hidden");
       form.reset();
-      q2Container.style.display = "none";
-      q2Other.style.display = "none";
-      setTimeout(() => { successMsg.style.display = "none"; }, 3000);
+      q2Div.classList.add("hidden");
+      q2Other.classList.add("hidden");
+      setTimeout(() => {
+        successMsg.classList.add("hidden");
+      }, 3000);
     } else {
-      alert("เกิดข้อผิดพลาดขณะบันทึก กรุณาลองใหม่");
+      alert("เกิดข้อผิดพลาดขณะบันทึก: " + result.message);
     }
-  })
-  .catch(err => {
+  } catch (err) {
     console.error(err);
     alert("เกิดข้อผิดพลาดขณะบันทึก กรุณาลองใหม่");
-  });
+  }
 });

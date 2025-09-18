@@ -1,35 +1,36 @@
 body {
-  font-family: 'Kanit', sans-serif;
-  background: #f5f5f5;
-  margin: 0;
-  padding: 0;
+  font-family: 'Noto Sans', sans-serif;
+  background: #f3f4f6;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
 }
 
 .container {
-  max-width: 600px;
-  margin: 2rem auto;
   background: #fff;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 100%;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .question {
   margin-bottom: 1.5rem;
 }
 
-.question-label {
+label {
   font-weight: 500;
-  margin-bottom: 0.5rem;
   display: block;
+  margin-bottom: 0.5rem;
 }
 
-.emoji-row {
+.options {
   display: flex;
   justify-content: space-between;
   gap: 0.5rem;
@@ -37,78 +38,59 @@ h1 {
 
 .emoji-option {
   flex: 1;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  border-radius: 12px;
+  text-align: center;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .emoji-option input {
   display: none;
 }
 
-.emoji-box {
-  padding: 1rem 0;
-  border-radius: 0.75rem;
-  text-align: center;
-  transition: all 0.2s;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 90px; /* ความสูงเท่ากัน */
+.emoji-option input:checked + .option {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.15);
 }
 
-.emoji-option input:checked + .emoji-box {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-}
-
-.emoji {
-  font-size: 2rem;
-}
-
-.label {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.pastel-green { background-color: #a8e6cf; color: #000; }
-.pastel-lime { background-color: #dcedc1; color: #000; }
-.pastel-yellow { background-color: #fff9b0; color: #000; }
-.pastel-orange { background-color: #ffd3b6; color: #000; }
-.pastel-red { background-color: #ffaaa5; color: #000; }
-
-select, textarea, button {
+select, textarea {
   width: 100%;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  font-family: 'Kanit', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 button {
-  background: #4da6ff;
+  background: #3b82f6;
   color: #fff;
-  font-weight: 500;
-  cursor: pointer;
+  font-weight: 600;
+  padding: 0.75rem;
+  width: 100%;
   border: none;
-  transition: all 0.2s;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
 button:hover {
   opacity: 0.9;
 }
 
-.success-msg {
-  text-align: center;
-  margin-top: 1rem;
-  font-weight: 500;
-  color: green;
+.hidden {
+  display: none;
 }
 
-@media (max-width: 500px) {
-  .emoji-row {
-    gap: 0.25rem;
-  }
-  .emoji-box {
-    padding: 0.75rem 0;
-  }
+#successMsg {
+  margin-top: 1rem;
+  text-align: center;
+  color: #16a34a;
 }
