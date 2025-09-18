@@ -1,99 +1,95 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f4f6;
+  font-family: 'Inter', sans-serif;
+  background: #f3f4f6;
   margin: 0;
   padding: 0;
 }
 
 .container {
   max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #fff;
-  border-radius: 1rem;
+  margin: 40px auto;
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
+  font-weight: 600;
 }
 
 .question {
-  margin-bottom: 1.5rem;
+  margin-bottom: 20px;
 }
 
-.emoji-group {
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+textarea, select {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-family: inherit;
+}
+
+.emoji-options {
   display: flex;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 6px;
 }
 
 .emoji-option {
   flex: 1;
 }
 
-.emoji {
+.emoji-option input {
+  display: none;
+}
+
+.emoji-box {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  text-align: center;
+  padding: 12px 0;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: 100px;
+  height: 80px;
 }
 
-.emoji-option input[type="radio"] {
-  display: none;
+.emoji-box span {
+  margin-top: 4px;
+  font-size: 14px;
 }
 
-.emoji-option input[type="radio"]:checked + .emoji {
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-  transform: translateY(-2px) scale(1.03);
-}
-
-.pastel-green { background-color: #a7f3d0; }
-.pastel-lime { background-color: #d9f99d; }
-.pastel-yellow { background-color: #fef9c3; }
-.pastel-orange { background-color: #fed7aa; }
-.pastel-red { background-color: #fecaca; }
-
-textarea, select {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 1px solid #d1d5db;
-  font-size: 1rem;
+.emoji-option input:checked + .emoji-box {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
 }
 
 button {
   width: 100%;
-  background-color: #3b82f6;
+  padding: 10px;
+  background: #3b82f6;
   color: white;
-  font-weight: 600;
-  padding: 0.75rem;
   border: none;
-  border-radius: 0.5rem;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: opacity 0.2s ease;
 }
 
-button:hover {
-  opacity: 0.9;
-}
-
-.success {
+#successMsg {
+  margin-top: 16px;
   text-align: center;
   color: #16a34a;
   font-weight: 500;
-  margin-top: 1rem;
-}
-
-@media (max-width: 500px) {
-  .emoji-group {
-    flex-direction: row;
-  }
+  display: none;
 }

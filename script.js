@@ -1,68 +1,63 @@
-// แสดงช่อง "อื่นๆ" ถ้าเลือก
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec'; // ใส่ URL ของ Apps Script
+const form = document.getElementById('surveyForm');
+const successMsg = document.getElementById('successMsg');
+const q2Div = document.getElementById('q2Div');
 const q2Select = document.getElementById('q2');
 const q2Other = document.getElementById('q2_other');
 
+q2Div.style.display = 'none';
+q2Other.style.display = 'none';
+
 q2Select.addEventListener('change', () => {
   if (q2Select.value === 'อื่นๆ') {
-    q2Other.classList.remove('hidden');
+    q2Other.style.display = 'block';
     q2Other.required = true;
   } else {
-    q2Other.classList.add('hidden');
+    q2Other.style.display = 'none';
     q2Other.required = false;
   }
 });
 
-// ซ่อนคำถามไม่พึงพอใจถ้าเลือกระดับความพึงพอใจสูง
-const q1Radios = document.querySelectorAll('input[name="q1"]');
-const q2Container = document.getElementById('q2-container');
-
-q1Radios.forEach(radio => {
-  radio.addEventListener('change', () => {
-    const val = parseInt(radio.value);
-    if (val <= 2) {
-      q2Container.classList.remove('hidden');
+// แสดงคำถามไม่พึงพอใจเฉพาะเมื่อเลือก 1 หรือ 2
+document.querySelectorAll('input[name="q1"]').forEach(input => {
+  input.addEventListener('change', () => {
+    const value = parseInt(input.value);
+    if (value <= 2) {
+      q2Div.style.display = 'block';
     } else {
-      q2Container.classList.add('hidden');
+      q2Div.style.display = 'none';
       q2Select.value = 'ไม่มี';
       q2Other.value = '';
-      q2Other.classList.add('hidden');
+      q2Other.style.display = 'none';
     }
   });
 });
 
-// ส่งฟอร์ม
-const form = document.getElementById('surveyForm');
-const successMsg = document.getElementById('successMsg');
-
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', e => {
   e.preventDefault();
+  const formData = new FormData(form);
 
-  let q2Value = q2Select.value;
-  if (q2Value === 'อื่นๆ') q2Value = q2Other.value;
-
-  const data = {
-    q1: document.querySelector('input[name="q1"]:checked')?.value || '',
-    q2: q2Value,
-    q3: document.getElementById('q3').value || ''
-  };
-
-  try {
-    const resp = await fetch('https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data)
-    });
-    const json = await resp.json();
-    if (json.status === 'success') {
-      successMsg.classList.remove('hidden');
-      form.reset();
-      q2Container.classList.add('hidden');
-      q2Other.classList.add('hidden');
-      setTimeout(() => successMsg.classList.add('hidden'), 3000);
-    } else {
-      alert('เกิดข้อผิดพลาดขณะบันทึก: ' + json.message);
-    }
-  } catch(err) {
-    alert('เกิดข้อผิดพลาดขณะบันทึก: ' + err);
+  // ถ้าเลือกอื่นๆ ให้เอา value จาก input
+  if (formData.get('q2') === 'อื่นๆ') {
+    formData.set('q2', q2Other.value);
   }
+
+  fetch(WEB_APP_URL, {
+    method: 'POST',
+    body: formData
+  }).then(res => res.json())
+    .then(data => {
+      if (data.status === 'success') {
+        successMsg.style.display = 'block';
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+          form.reset();
+          q2Div.style.display = 'none';
+          q2Other.style.display = 'none';
+        }, 1500);
+      } else {
+        alert('เกิดข้อผิดพลาดขณะบันทึก');
+      }
+    })
+    .catch(err => alert('เกิดข้อผิดพลาดขณะบันทึก'));
 });
