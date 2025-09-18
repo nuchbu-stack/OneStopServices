@@ -1,87 +1,88 @@
 body {
-  font-family: 'Arial', sans-serif;
-  background: #f5f5f5;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  font-family: "Sarabun", sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
   max-width: 600px;
-  width: 100%;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .question {
   margin-bottom: 20px;
 }
 
-.emoji-options {
+.options {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  flex-wrap: wrap;
 }
 
-.emoji-option input {
+.option {
+  flex: 1;
+  margin: 4px;
+}
+
+.option input {
   display: none;
 }
 
-.emoji-box {
-  text-align: center;
-  padding: 15px 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.emoji {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.emoji-box span {
-  margin-top: 5px;
-}
-
-/* สีตามระดับ */
-.green { background:#a3e635; color:#fff; }
-.lightgreen { background:#bef264; color:#fff; }
-.yellow { background:#fde68a; color:#000; }
-.orange { background:#fb923c; color:#fff; }
-.red { background:#f87171; color:#fff; }
-
-/* active state */
-.emoji-option input:checked + .emoji-box {
-  transform: scale(1.05);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.2);
-}
-
-/* ปุ่มส่ง */
-button {
-  background: #3b82f6;
-  color: #fff;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
+  padding: 12px;
+  border-radius: 12px;
   cursor: pointer;
-  width: 100%;
+  color: #fff;
+  min-height: 90px;
   transition: all 0.2s ease;
 }
 
-button:hover {
-  opacity: 0.9;
+.emoji span {
+  margin-top: 6px;
+  font-weight: 500;
 }
 
-.success-msg {
-  text-align: center;
-  color: green;
-  margin-top: 10px;
+.option input:checked + .emoji {
+  box-shadow: 0 0 0 4px rgba(0,0,0,0.1);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.bg-green { background: #A7F3D0; color: #065F46; }
+.bg-lime { background: #D9F99D; color: #365314; }
+.bg-yellow { background: #FEF08A; color: #78350F; }
+.bg-orange { background: #FDBA74; color: #7C2D12; }
+.bg-red { background: #FCA5A5; color: #7F1D1D; }
+
+button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #3B82F6;
+  color: #fff;
   font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+button:hover { opacity: 0.9; }
+
+.success {
+  text-align: center;
+  margin-top: 12px;
+  font-weight: bold;
+  color: green;
 }

@@ -2,47 +2,49 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>แบบประเมินความพึงพอใจ</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=1">
+  <script defer src="script.js?v=1"></script>
 </head>
 <body>
   <div class="container">
     <h1>แบบประเมินความพึงพอใจ</h1>
-    <form id="surveyForm" class="survey-form">
-      <!-- คำถามระดับความพึงพอใจ -->
+    <form id="surveyForm">
+      <!-- ระดับความพึงพอใจ -->
       <div class="question">
         <label>ระดับความพึงพอใจของท่าน</label>
-        <div class="emoji-options">
-          <label class="emoji-option">
+        <div class="options">
+          <label class="option">
             <input type="radio" name="q1" value="5" required>
-            <div class="emoji-box green">😁<span>มากที่สุด</span></div>
+            <div class="emoji bg-green">😁<span>มากที่สุด</span></div>
           </label>
-          <label class="emoji-option">
+          <label class="option">
             <input type="radio" name="q1" value="4">
-            <div class="emoji-box lightgreen">😊<span>มาก</span></div>
+            <div class="emoji bg-lime">😊<span>มาก</span></div>
           </label>
-          <label class="emoji-option">
+          <label class="option">
             <input type="radio" name="q1" value="3">
-            <div class="emoji-box yellow">😐<span>ปานกลาง</span></div>
+            <div class="emoji bg-yellow">😐<span>ปานกลาง</span></div>
           </label>
-          <label class="emoji-option">
+          <label class="option">
             <input type="radio" name="q1" value="2">
-            <div class="emoji-box orange">😕<span>น้อย</span></div>
+            <div class="emoji bg-orange">😕<span>น้อย</span></div>
           </label>
-          <label class="emoji-option">
+          <label class="option">
             <input type="radio" name="q1" value="1">
-            <div class="emoji-box red">😡<span>น้อยที่สุด</span></div>
+            <div class="emoji bg-red">😡<span>น้อยที่สุด</span></div>
           </label>
         </div>
       </div>
 
-      <!-- คำถามไม่พึงพอใจ จะซ่อนเริ่มต้น -->
+      <!-- คำถามไม่พึงพอใจ (เริ่มซ่อน) -->
       <div class="question" id="q2-container" style="display:none;">
         <label>ท่านไม่พึงพอใจในเรื่องใด</label>
         <select name="q2" id="q2">
           <option value="ไม่มี">ไม่มี</option>
           <option value="การให้บริการของเจ้าหน้าที่">การให้บริการของเจ้าหน้าที่</option>
-          <option value="ความล่าช้า">ความล่าช้า</option>
+          <option value="ความล่าช้า">ความล่าช้า (จากขั้นตอน / รอนาน)</option>
           <option value="ความผิดพลาด/ความถูกต้อง">ความผิดพลาด/ความถูกต้อง</option>
           <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
         </select>
@@ -52,14 +54,12 @@
       <!-- ข้อเสนอแนะเพิ่มเติม -->
       <div class="question">
         <label>ข้อเสนอแนะเพิ่มเติม</label>
-        <textarea name="q3" rows="3" placeholder="พิมพ์ข้อเสนอแนะ..."></textarea>
+        <textarea name="q3" rows="3"></textarea>
       </div>
 
       <button type="submit">ส่งแบบประเมิน</button>
-      <p id="successMsg" class="success-msg" style="display:none;">บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม</p>
+      <p id="successMsg" class="success" style="display:none;">บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม</p>
     </form>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
