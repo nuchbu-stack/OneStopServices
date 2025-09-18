@@ -1,63 +1,77 @@
-/* responsive layout for emoji options */
-.options-grid {
-  display: grid;
+/* ensure consistent box sizing */
+* { box-sizing: border-box; }
+
+/* visual helpers */
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* RATING: horizontal row, equal heights on mobile */
+/* use flex so items distribute evenly and keep same height */
+.rating-options {
+  display: flex;
   gap: 10px;
-  grid-template-columns: repeat(5, 1fr);
+  align-items: stretch;    /* ensure children stretch vertically */
+  justify-content: space-between;
+  flex-wrap: nowrap;       /* keep one row (no wrap) */
 }
 
-/* mobile: 2 columns for easier tapping */
-@media (max-width: 640px) {
-  .options-grid { grid-template-columns: repeat(2, 1fr); }
+/* each option takes equal space and stretches */
+.rating-options .emoji-option {
+  flex: 1 1 0;
+  display: flex;
+  align-items: stretch;
 }
 
-/* very narrow: single column */
-@media (max-width: 380px) {
-  .options-grid { grid-template-columns: 1fr; }
-}
-
-/* emoji box styling */
+/* emoji box stretches to full height of label */
 .emoji-box {
+  flex: 1 1 auto;
   border-radius: 12px;
-  padding: 14px 10px;
+  padding: 12px 8px;
   text-align: center;
-  transition: transform 180ms cubic-bezier(.2,.9,.2,1), box-shadow 180ms;
+  transition: transform 180ms cubic-bezier(.2,.9,.2,1), box-shadow 180ms, outline 180ms;
   user-select: none;
-  min-height: 72px;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
+  min-height: 68px; /* baseline height for desktop */
 }
 
-/* emoji size and label */
-.emoji { font-size: 28px; line-height:1; }
+/* label text and emoji sizes */
+.emoji { font-size: 26px; line-height:1; }
 .label { margin-top:8px; font-size:13px; }
 
-/* active state (animated) */
+/* active state (either JS adds emoji-active or input:checked + .emoji-box) */
 .emoji-box.emoji-active,
 .emoji-option input:checked + .emoji-box {
-  transform: translateY(-6px) scale(1.07);
+  transform: translateY(-6px) scale(1.06);
   box-shadow: 0 14px 28px rgba(2,6,23,0.12);
   outline: 3px solid rgba(59,130,246,0.95);
 }
 
-/* keyboard focus on label */
-.emoji-option:focus .emoji-box {
-  outline: 2px dashed rgba(59,130,246,0.45);
-  transform: translateY(-2px) scale(1.02);
-}
+/* keyboard focus */
+.emoji-option:focus .emoji-box { outline: 2px dashed rgba(59,130,246,0.45); transform: translateY(-2px) scale(1.02); }
 
-/* form elements */
-select, textarea, input[type="text"] {
-  font-size: 15px;
-}
-
-/* submit button touch target */
-#submitBtn { font-size: 16px; padding-top:12px; padding-bottom:12px; }
-
-/* small adjustments for narrow screens */
-@media (max-width: 420px) {
+/* responsive: on smaller screens keep one row but ensure equal height and comfortable touch target */
+@media (max-width: 640px) {
+  .emoji-box { min-height: 72px; padding: 12px 6px; }
   .emoji { font-size: 24px; }
   .label { font-size: 12px; }
-  .emoji-box { min-height: 64px; padding: 12px; }
 }
+
+/* very narrow screens: allow horizontal scroll if not enough width */
+@media (max-width: 340px) {
+  .rating-options { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .rating-options .emoji-option { min-width: 110px; flex: 0 0 auto; }
+}
+
+/* form elements sizing */
+select, textarea, input[type="text"] { font-size: 15px; }
+
+/* submit button */
+#submitBtn { font-size: 16px; padding-top:12px; padding-bottom:12px; }
+
+/* toast small helper */
+.toast { padding: 10px 14px; border-radius: 10px; color: #fff; box-shadow: 0 6px 18px rgba(0,0,0,0.12); margin-top: 8px; }
+
+/* spinner keyframes */
+@keyframes spin { to { transform: rotate(360deg); } }
