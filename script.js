@@ -1,4 +1,4 @@
-const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec'; // ใส่ URL ของ Apps Script
+const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec'; // ใส่ URL Apps Script
 const form = document.getElementById('surveyForm');
 const successMsg = document.getElementById('successMsg');
 const q2Div = document.getElementById('q2Div');
