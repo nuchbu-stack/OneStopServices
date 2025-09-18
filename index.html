@@ -3,45 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แบบประเมินความพึงพอใจ</title>
+<title>Satisfaction Survey</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-  <h1 class="title">แบบประเมินความพึงพอใจ</h1>
+  <h1>แบบประเมินความพึงพอใจ</h1>
   <form id="surveyForm">
-    <!-- Question 1: Satisfaction -->
-    <div class="question-block">
-      <p class="question-text">ระดับความพึงพอใจของท่าน</p>
-      <div class="options" id="q1-options">
-        <div class="option" data-value="5">😃 5</div>
-        <div class="option" data-value="4">🙂 4</div>
-        <div class="option" data-value="3">😐 3</div>
-        <div class="option" data-value="2">🙁 2</div>
-        <div class="option" data-value="1">😞 1</div>
+    <!-- Section 1 -->
+    <div class="question">
+      <p>ระดับความพึงพอใจของท่าน</p>
+      <div class="options" id="q1Options">
+        <div class="option" data-value="5">😊 ดีมาก</div>
+        <div class="option" data-value="4">🙂 ดี</div>
+        <div class="option" data-value="3">😐 ปานกลาง</div>
+        <div class="option" data-value="2">😕 น้อย</div>
+        <div class="option" data-value="1">😞 น้อยที่สุด</div>
       </div>
     </div>
 
-    <!-- Conditional Question -->
-    <div class="question-block hidden" id="q2-block">
-      <p class="question-text">ท่านไม่พึงพอใจในเรื่องใด</p>
-      <div class="options" id="q2-options">
-        <div class="option" data-value="บริการช้า">บริการช้า</div>
-        <div class="option" data-value="ไม่สะดวก">ไม่สะดวก</div>
-        <div class="option" data-value="พนักงานไม่ช่วยเหลือ">พนักงานไม่ช่วยเหลือ</div>
-        <div class="option" data-value="อื่นๆ" id="q2-other">อื่นๆ (โปรดระบุ)</div>
-      </div>
-      <input type="text" class="hidden" id="q2-other-text" placeholder="โปรดระบุ">
+    <!-- Section 2 (conditional) -->
+    <div class="question hidden" id="q2Section">
+      <p>ท่านไม่พึงพอใจในเรื่องใด</p>
+      <select id="q2" name="q2">
+        <option value="">เลือก</option>
+        <option value="คุณภาพการบริการ">คุณภาพการบริการ</option>
+        <option value="ความรวดเร็ว">ความรวดเร็ว</option>
+        <option value="ความสุภาพ">ความสุภาพ</option>
+        <option value="อื่นๆ">อื่นๆ (โปรดระบุ)</option>
+      </select>
+      <input type="text" id="q2Other" name="q2Other" class="hidden" placeholder="โปรดระบุ">
     </div>
 
-    <!-- Feedback -->
-    <div class="question-block">
-      <p class="question-text">ข้อเสนอแนะเพิ่มเติม</p>
-      <textarea id="q3" placeholder="พิมพ์ข้อเสนอแนะเพิ่มเติม (ถ้ามี)"></textarea>
+    <!-- Section 3 -->
+    <div class="question">
+      <p>ข้อเสนอแนะเพิ่มเติม</p>
+      <textarea name="q3" id="q3" rows="3" placeholder="พิมพ์ข้อความเพิ่มเติมได้"></textarea>
     </div>
 
     <button type="submit">ส่งแบบประเมิน</button>
-    <div id="confirmation" class="hidden">บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม!</div>
+    <p id="responseMsg" class="hidden"></p>
   </form>
 </div>
 <script src="script.js"></script>
