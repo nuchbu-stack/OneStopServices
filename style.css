@@ -164,3 +164,52 @@ button:hover:not(:disabled) {
   border: 1px solid #ccc;
   font-size: 15px;
 }
+
+/* เดิมคงไว้ทั้งหมด ด้านล่างนี้คือส่วนปรับ responsive เพิ่มเติม */
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .options {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .option {
+    flex: 0 1 calc(50% - 10px); /* 2 คอลัมน์ */
+    min-width: 120px;
+    font-size: 18px;
+    padding: 15px 0;
+  }
+
+  .option span {
+    font-size: 13px;
+  }
+
+  textarea {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .option {
+    flex: 1 1 100%; /* ให้เรียงแถวเดียวถ้าจอเล็กมาก */
+    min-width: auto;
+  }
+}
