@@ -217,14 +217,17 @@ button:hover:not(:disabled) {
 
 /* */
 
+
 .options {
   display: flex;
-  flex-direction: column; /* แสดงเป็นคอลัมน์เดียวเสมอ */
-  gap: 12px;
+  flex-direction: row;      /* แนวนอนเสมอ */
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: nowrap;        /* ไม่ตัดบรรทัด */
 }
 
 .option {
-  width: 100%;             /* กินเต็มความกว้าง container */
+  flex: 1 1 0;              /* ทุกปุ่มกว้างเท่ากัน */
   text-align: center;
   padding: 15px 0;
   border-radius: 12px;
@@ -236,31 +239,8 @@ button:hover:not(:disabled) {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Layout ปกติ */
-.options {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+.option span {
+  display: block;
+  font-size: 13px;
+  margin-top: 4px;
 }
-
-/* ปรับเฉพาะมือถือ */
-@media (max-width: 600px) {
-  .options {
-    flex-wrap: nowrap;          /* บังคับให้อยู่บรรทัดเดียว */
-    overflow-x: auto;           /* ถ้าจอเล็กมาก ให้เลื่อนในแนวนอนได้ */
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .option {
-    flex: 0 0 auto;             /* ขนาดคงที่ ไม่หดจนอ่านไม่ออก */
-    min-width: 80px;            /* กำหนดให้พอดีกับจอเล็ก */
-    font-size: 16px;
-    padding: 12px 0;
-  }
-
-  .option span {
-    font-size: 12px;
-  }
-}
-
