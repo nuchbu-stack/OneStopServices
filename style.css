@@ -19,7 +19,7 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #1976D2; /* modern blue */
+  color: #1976D2;
   font-size: 24px;
   font-weight: 600;
 }
@@ -51,7 +51,7 @@ h1 {
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 18px;
+  font-size: 28px;   /* ขยาย emoji/icon */
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 
@@ -60,11 +60,11 @@ h1 {
   justify-content: center;
   align-items: center;
 
-  height: 80px;
+  height: 90px;      /* เพิ่มความสูงให้สมดุลกับ icon */
 }
 
 .option span {
-  font-size: 13px;
+  font-size: 16px;   /* ขยายข้อความใต้ icon */
   margin-top: 4px;
 }
 
@@ -98,12 +98,12 @@ h1 {
 /* Responsive บนจอเล็ก */
 @media (max-width: 480px) {
   .option {
-    font-size: 14px;
-    height: 65px;
+    font-size: 22px;  /* emoji เล็กลงนิดหน่อย */
+    height: 75px;
   }
 
   .option span {
-    font-size: 11px;
+    font-size: 14px;
   }
 }
 
@@ -128,14 +128,30 @@ textarea {
   resize: vertical;
 }
 
-button {
+#q2Other {
   width: 100%;
-  padding: 16px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#q2Other:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+  outline: none;
+}
+
+button {
+  padding: 14px 20px;
   border: none;
   border-radius: 12px;
-  background: #1976D2; /* modern blue */
+  background: #1976D2;
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
@@ -152,81 +168,6 @@ button:hover:not(:disabled) {
 
 .hidden { display: none; }
 
-#responseMsg {
-  margin-top: 16px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-/* สถานะข้อความ */
-#responseMsg.success { color: #2e7d32; }
-#responseMsg.error { color: #d32f2f; }
-
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.radio-group label {
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.radio-group input[type="text"] {
-  margin-top: 8px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-  width: 100%;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.radio-group input[type="text"]:focus {
-  border-color: #1976D2;
-  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
-  outline: none;
-}
-
-/* inline "อื่นๆ" */
-.inline-other {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.inline-other input[type="text"] {
-  flex: 1;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
-
-#responseMsg {
-  margin-top: 16px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-#responseMsg.show {
-  opacity: 1;
-}
-
-/* สีข้อความ */
-#responseMsg.success { color: #2e7d32; }
-#responseMsg.error { color: #d32f2f; }
-
-/* ...โค้ดเดิมของคุณคงไว้ทั้งหมด... */
-
-.hidden { display: none; }
-
 /* Thank you page */
 #thankYou {
   text-align: center;
@@ -235,7 +176,7 @@ button:hover:not(:disabled) {
 
 #thankYou h2 {
   color: #1976D2;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 #thankYou p {
@@ -261,13 +202,4 @@ button:hover:not(:disabled) {
 
 #againBtn:hover {
   background: #0D47A1;
-}
-
-#closeBtn {
-  background: #ccc;
-  color: #333;
-}
-
-#closeBtn:hover {
-  background: #999;
 }
