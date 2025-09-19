@@ -249,10 +249,10 @@ button:hover:not(:disabled) {
 /* responsive */
 .options {
   display: flex;
-  flex-direction: row;      /* แนวนอนเสมอ */
+  flex-direction: row;      /* เรียงแนวนอนเสมอ */
   justify-content: space-between;
   gap: 6px;
-  flex-wrap: nowrap;        /* ไม่ตัดบรรทัด */
+  flex-wrap: nowrap;        /* ห้ามตัดบรรทัด */
 }
 
 .option {
@@ -266,7 +266,7 @@ button:hover:not(:disabled) {
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   padding: 15px 0;
-  height: 90px;             /* 🔹 ความสูงคงที่ */
+  height: 90px;              /* ความสูงเท่ากัน */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -277,16 +277,16 @@ button:hover:not(:disabled) {
   margin-top: 4px;
 }
 
-/* 📱 Mobile (iPhone / จอเล็ก ≤ 768px) */
-@media (max-width: 768px) {
+/* 📱 สำหรับ iPhone และจอเล็ก */
+@media screen and (max-device-width: 812px) {
   .option {
     font-size: 14px;
-    height: 70px;          /* 🔹 ลดความสูง */
-    padding: 8px 0;
+    height: 65px;           /* ลดความสูงลง */
+    padding: 6px 0;
+    flex-basis: 18%;        /* ปุ่มแต่ละอันกว้าง ~20% ของแถว */
   }
 
   .option span {
     font-size: 11px;
   }
 }
-
