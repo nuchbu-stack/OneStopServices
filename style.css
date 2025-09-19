@@ -222,3 +222,52 @@ button:hover:not(:disabled) {
 /* สีข้อความ */
 #responseMsg.success { color: #2e7d32; }
 #responseMsg.error { color: #d32f2f; }
+
+/* ...โค้ดเดิมของคุณคงไว้ทั้งหมด... */
+
+.hidden { display: none; }
+
+/* Thank you page */
+#thankYou {
+  text-align: center;
+  padding: 30px;
+}
+
+#thankYou h2 {
+  color: #1976D2;
+  margin-bottom: 15px;
+}
+
+#thankYou p {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+#thankYou button {
+  margin: 5px;
+  min-width: 140px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#againBtn {
+  background: #1976D2;
+  color: #fff;
+}
+
+#againBtn:hover {
+  background: #0D47A1;
+}
+
+#closeBtn {
+  background: #ccc;
+  color: #333;
+}
+
+#closeBtn:hover {
+  background: #999;
+}

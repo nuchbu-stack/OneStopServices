@@ -2,8 +2,7 @@ const form = document.getElementById("surveyForm");
 const q1Options = document.querySelectorAll("#q1Options .option");
 const q2Section = document.getElementById("q2Section");
 const q2Other = document.getElementById("q2Other");
-const responseMsg = document.getElementById("responseMsg");
-const submitBtn = form.querySelector("button");
+const thankYou = document.getElementById("thankYou");
 
 let q1Value = "";
 let q2Value = "";
@@ -45,15 +44,13 @@ form.addEventListener("submit", async (e) => {
 
   let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value.trim() : q2Value;
 
-  // Validate Q1
   if (!q1Value) {
-    showMessage("กรุณาเลือกระดับความพึงพอใจ", "error");
+    alert("กรุณาเลือกระดับความพึงพอใจ");
     return;
   }
 
-  // Validate Q2 "อื่นๆ"
   if ((q1Value === "1" || q1Value === "2") && q2Value === "อื่นๆ" && !finalQ2) {
-    showMessage("กรุณาระบุรายละเอียดในช่อง 'อื่นๆ'", "error");
+    alert("กรุณาระบุรายละเอียดในช่อง 'อื่นๆ'");
     return;
   }
 
@@ -63,10 +60,11 @@ form.addEventListener("submit", async (e) => {
     q3: document.getElementById("q3").value
   });
 
-  // ✅ แสดงข้อความสำเร็จทันที (optimistic UI)
-  showMessage("บันทึกข้อมูลเรียบร้อยแล้ว ขอบคุณที่ตอบแบบสอบถาม", "success");
+  // ✅ แสดง thank you page
+  form.classList.add("hidden");
+  thankYou.classList.remove("hidden");
 
-  // Reset form ให้พร้อมสำหรับรอบใหม่
+  // Reset form
   form.reset();
   q1Options.forEach(o => o.classList.remove("active"));
   q1Value = "";
@@ -79,30 +77,18 @@ form.addEventListener("submit", async (e) => {
       method: "POST",
       body: payload
     });
-    // ไม่ต้อง handle response แล้ว เพราะขึ้น success ไปก่อนแล้ว
   } catch (err) {
     console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
-    // ไม่แจ้ง user เพื่อไม่ให้เสีย UX
   }
 });
 
-// Helper function
-function showMessage(msg, type) {
-  responseMsg.textContent = msg;
+// ปุ่มทำใหม่
+document.getElementById("againBtn").addEventListener("click", () => {
+  thankYou.classList.add("hidden");
+  form.classList.remove("hidden");
+});
 
-  // ลบ class เก่า
-  responseMsg.classList.remove("success", "error", "show");
-
-  // ใส่ class ใหม่
-  responseMsg.classList.add(type, "show");
-
-  // เคลียร์ timer เก่า
-  if (responseMsg.hideTimeout) {
-    clearTimeout(responseMsg.hideTimeout);
-  }
-
-  // ซ่อนข้อความหลัง 10 วินาที
-  responseMsg.hideTimeout = setTimeout(() => {
-    responseMsg.classList.remove("show");
-  }, 10000);
-}
+// ปุ่มปิด
+document.getElementById("closeBtn").addEventListener("click", () => {
+  thankYou.classList.add("hidden");
+});
