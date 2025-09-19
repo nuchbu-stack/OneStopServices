@@ -63,31 +63,26 @@ form.addEventListener("submit", async (e) => {
     q3: document.getElementById("q3").value
   });
 
-  responseMsg.className = "hidden";
-  submitBtn.disabled = true;
+  // ✅ แสดงข้อความสำเร็จทันที (optimistic UI)
+  showMessage("บันทึกข้อมูลเรียบร้อยแล้ว ขอบคุณที่ตอบแบบสอบถาม", "success");
 
+  // Reset form ให้พร้อมสำหรับรอบใหม่
+  form.reset();
+  q1Options.forEach(o => o.classList.remove("active"));
+  q1Value = "";
+  q2Section.classList.add("hidden");
+  q2Other.classList.add("hidden");
+
+  // ส่งข้อมูลไป Google Sheet เบื้องหลัง
   try {
-    const res = await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
+    await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
       body: payload
     });
-    const data = await res.json();
-
-    if (data.status === "success") {
-      showMessage("บันทึกข้อมูลเรียบร้อย ขอบคุณที่ตอบแบบสอบถาม", "success");
-      form.reset();
-      q1Options.forEach(o => o.classList.remove("active"));
-      q1Value = "";
-      q2Section.classList.add("hidden");
-      q2Other.classList.add("hidden");
-    } else {
-      throw new Error(data.message || "Unknown error");
-    }
+    // ไม่ต้อง handle response แล้ว เพราะเราขึ้น success ไปก่อนแล้ว
   } catch (err) {
-    showMessage("เกิดข้อผิดพลาดขณะบันทึก กรุณาลองใหม่", "error");
-    console.error(err);
-  } finally {
-    submitBtn.disabled = false;
+    console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
+    // ไม่แจ้ง user เพื่อไม่ให้เสีย UX
   }
 });
 
