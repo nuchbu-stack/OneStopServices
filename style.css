@@ -248,19 +248,18 @@ button:hover:not(:disabled) {
 
 /* responsive */
 .options {
-  display: flex;
-  flex-direction: row;   /* เรียงแนวนอน */
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มแนวนอนเสมอ */
   gap: 6px;
 }
 
 .option {
-  flex: 0 0 20%;         /* ทุกปุ่มกว้างเท่ากัน = 20% */
+  min-width: 0; /* 🔑 ป้องกันไม่ให้ปุ่มดัน layout บน iPhone */
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 18px;
+  font-size: clamp(12px, 3vw, 18px); /* responsive font */
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
@@ -269,23 +268,12 @@ button:hover:not(:disabled) {
   justify-content: center;
   align-items: center;
 
-  height: 80px;          /* ความสูงเท่ากันเสมอ */
+  height: 70px; /* ความสูงเท่ากันเสมอ */
 }
 
 .option span {
-  font-size: 13px;
+  font-size: clamp(10px, 2vw, 13px);
   margin-top: 4px;
 }
 
-/* 📱 จอเล็ก (iPhone) */
-@media (max-width: 480px) {
-  .option {
-    font-size: 14px;     /* ตัวอักษรเล็กลง */
-    height: 60px;        /* ปุ่มเตี้ยลง */
-  }
-
-  .option span {
-    font-size: 11px;
-  }
-}
 
