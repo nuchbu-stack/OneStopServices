@@ -291,3 +291,47 @@ button:hover:not(:disabled) {
   }
 }
 
+.options {
+  display: flex;
+  flex-direction: row;      /* แนวนอนเสมอ */
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: nowrap;        /* ไม่ตัดบรรทัด */
+}
+
+.option {
+  flex: 1 1 0;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+  font-size: 18px;
+  color: #333;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 15px 0;
+  height: 90px;             /* 🔹 ความสูงคงที่ */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.option span {
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* 📱 Mobile (iPhone / จอเล็ก ≤ 768px) */
+@media (max-width: 768px) {
+  .option {
+    font-size: 14px;
+    height: 70px;          /* 🔹 ลดความสูง */
+    padding: 8px 0;
+  }
+
+  .option span {
+    font-size: 11px;
+  }
+}
+
+
