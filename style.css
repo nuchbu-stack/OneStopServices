@@ -248,20 +248,17 @@ button:hover:not(:disabled) {
 
 /* responsive */
 .options {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มแนวนอน */
   gap: 6px;
-  flex-wrap: nowrap; /* ห้ามขึ้นบรรทัดใหม่ */
 }
 
 .option {
-  width: 20%;              /* แต่ละปุ่มกว้าง 20% ของ container */
   text-align: center;
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s;
-  font-size: 18px;
+  font-size: 4vw;          /* ขนาดตัวอักษรสัมพันธ์กับหน้าจอ */
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
@@ -270,23 +267,13 @@ button:hover:not(:disabled) {
   justify-content: center;
   align-items: center;
 
-  height: 80px;            /* ความสูงเท่ากันเสมอ */
+  height: 18vw;            /* ความสูงสัมพันธ์กับจอ → เล็กลงอัตโนมัติ */
+  min-height: 55px;        /* กันไม่ให้เล็กเกิน */
+  max-height: 90px;        /* กันไม่ให้ใหญ่เกิน */
 }
 
 .option span {
-  font-size: 13px;
+  font-size: 2.5vw;        /* responsive text */
   margin-top: 4px;
-}
-
-/* 📱 ปรับเล็กลงเมื่อจอ <= 480px */
-@media (max-width: 480px) {
-  .option {
-    font-size: 14px;
-    height: 60px;
-  }
-
-  .option span {
-    font-size: 11px;
-  }
 }
 
