@@ -247,19 +247,20 @@ button:hover:not(:disabled) {
 
 
 /* responsive */
-/* Q1 options layout */
 .options {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มแนวนอนเสมอ */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 6px;
+  flex-wrap: nowrap; /* ห้ามขึ้นบรรทัดใหม่ */
 }
 
 .option {
+  width: 20%;              /* แต่ละปุ่มกว้าง 20% ของ container */
   text-align: center;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s;
-  user-select: none;
   font-size: 18px;
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -269,7 +270,7 @@ button:hover:not(:disabled) {
   justify-content: center;
   align-items: center;
 
-  height: 90px; /* ทุกปุ่มสูงเท่ากัน */
+  height: 80px;            /* ความสูงเท่ากันเสมอ */
 }
 
 .option span {
@@ -277,12 +278,11 @@ button:hover:not(:disabled) {
   margin-top: 4px;
 }
 
-/* 📱 Mobile */
-@media (max-width: 600px) {
+/* 📱 ปรับเล็กลงเมื่อจอ <= 480px */
+@media (max-width: 480px) {
   .option {
     font-size: 14px;
-    height: 65px;   /* ลดความสูงลง */
-    padding: 4px;
+    height: 60px;
   }
 
   .option span {
