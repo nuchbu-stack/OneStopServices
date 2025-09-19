@@ -13,19 +13,22 @@ body {
   background: #fff;
   padding: 30px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #333;
+  color: #1976D2; /* modern blue */
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .label {
   font-weight: 600;
   margin-bottom: 10px;
   display: block;
+  color: #333;
 }
 
 .question {
@@ -36,28 +39,28 @@ h1 {
 /* Q1 options layout */
 .options {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มเรียงแนวนอนเสมอ */
+  grid-template-columns: repeat(5, 1fr);
   gap: 6px;
   width: 100%;
   box-sizing: border-box;
 }
 
 .option {
-  min-width: 0; /* ป้องกันปุ่มดัน layout บน iPhone */
+  min-width: 0;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   font-size: 18px;
   color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  height: 80px; /* ความสูงเท่ากันเสมอ */
+  height: 80px;
 }
 
 .option span {
@@ -72,9 +75,15 @@ h1 {
 .option-2 { background-color: #ffe0b2; }
 .option-1 { background-color: #ffcdd2; }
 
+/* ปุ่ม hover */
+.option:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
 /* ปุ่ม active */
 .option.active {
-  box-shadow: 0 0 0 3px #616161, 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 0 0 3px #1976D2, 0 4px 12px rgba(0,0,0,0.15);
   transform: scale(1.08);
 }
 
@@ -106,6 +115,13 @@ select, textarea {
   margin-top: 8px;
   font-size: 16px;
   box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus, select:focus, input:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+  outline: none;
 }
 
 textarea {
@@ -117,7 +133,7 @@ button {
   padding: 16px;
   border: none;
   border-radius: 12px;
-  background: #4CAF50;
+  background: #1976D2; /* modern blue */
   color: white;
   font-size: 17px;
   cursor: pointer;
@@ -130,7 +146,7 @@ button:disabled {
 }
 
 button:hover:not(:disabled) {
-  background: #388E3C;
+  background: #0D47A1;
   transform: translateY(-2px);
 }
 
@@ -144,14 +160,8 @@ button:hover:not(:disabled) {
 }
 
 /* สถานะข้อความ */
-#responseMsg.success { color: green; }
-#responseMsg.error { color: red; }
-
-@media (max-width: 480px){
-  .options {
-    gap: 4px; /* ลดช่องว่างลงเล็กน้อยสำหรับมือถือ */
-  }
-}
+#responseMsg.success { color: #2e7d32; }
+#responseMsg.error { color: #d32f2f; }
 
 .radio-group {
   display: flex;
@@ -172,6 +182,13 @@ button:hover:not(:disabled) {
   border: 1px solid #ccc;
   font-size: 15px;
   width: 100%;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.radio-group input[type="text"]:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+  outline: none;
 }
 
 /* inline "อื่นๆ" */
