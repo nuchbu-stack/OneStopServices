@@ -89,9 +89,14 @@ form.addEventListener("submit", async (e) => {
 // Helper function
 function showMessage(msg, type) {
   responseMsg.textContent = msg;
-  responseMsg.className = type + " show"; // success/error + show
 
-  // เคลียร์ timer เก่า (ถ้ามี)
+  // ลบ class เก่า
+  responseMsg.classList.remove("success", "error", "show");
+
+  // ใส่ class ใหม่
+  responseMsg.classList.add(type, "show");
+
+  // เคลียร์ timer เก่า
   if (responseMsg.hideTimeout) {
     clearTimeout(responseMsg.hideTimeout);
   }
