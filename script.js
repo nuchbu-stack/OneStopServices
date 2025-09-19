@@ -64,7 +64,30 @@ form.addEventListener("submit", async (e) => {
   });
 
   // ✅ แสดงข้อความสำเร็จทันที (optimistic UI)
- function showMessage(msg, type) {
+  showMessage("บันทึกข้อมูลเรียบร้อยแล้ว ขอบคุณที่ตอบแบบสอบถาม", "success");
+
+  // Reset form ให้พร้อมสำหรับรอบใหม่
+  form.reset();
+  q1Options.forEach(o => o.classList.remove("active"));
+  q1Value = "";
+  q2Section.classList.add("hidden");
+  q2Other.classList.add("hidden");
+
+  // ส่งข้อมูลไป Google Sheet เบื้องหลัง
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
+      method: "POST",
+      body: payload
+    });
+    // ไม่ต้อง handle response แล้ว เพราะขึ้น success ไปก่อนแล้ว
+  } catch (err) {
+    console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
+    // ไม่แจ้ง user เพื่อไม่ให้เสีย UX
+  }
+});
+
+// Helper function
+function showMessage(msg, type) {
   responseMsg.textContent = msg;
   responseMsg.className = type + " show"; // success/error + show
 
@@ -77,24 +100,4 @@ form.addEventListener("submit", async (e) => {
   responseMsg.hideTimeout = setTimeout(() => {
     responseMsg.classList.remove("show");
   }, 10000);
-}
-
-
-  // ส่งข้อมูลไป Google Sheet เบื้องหลัง
-  try {
-    await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
-      method: "POST",
-      body: payload
-    });
-    // ไม่ต้อง handle response แล้ว เพราะเราขึ้น success ไปก่อนแล้ว
-  } catch (err) {
-    console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
-    // ไม่แจ้ง user เพื่อไม่ให้เสีย UX
-  }
-});
-
-// Helper function
-function showMessage(msg, type) {
-  responseMsg.textContent = msg;
-  responseMsg.className = type; // success / error
 }
