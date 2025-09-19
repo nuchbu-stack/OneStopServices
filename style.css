@@ -205,3 +205,20 @@ button:hover:not(:disabled) {
   border: 1px solid #ccc;
   font-size: 15px;
 }
+
+#responseMsg {
+  margin-top: 16px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#responseMsg.show {
+  opacity: 1;
+}
+
+/* สีข้อความ */
+#responseMsg.success { color: #2e7d32; }
+#responseMsg.error { color: #d32f2f; }

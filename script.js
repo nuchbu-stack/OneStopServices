@@ -64,14 +64,21 @@ form.addEventListener("submit", async (e) => {
   });
 
   // ✅ แสดงข้อความสำเร็จทันที (optimistic UI)
-  showMessage("บันทึกข้อมูลเรียบร้อยแล้ว ขอบคุณที่ตอบแบบสอบถาม", "success");
+ function showMessage(msg, type) {
+  responseMsg.textContent = msg;
+  responseMsg.className = type + " show"; // success/error + show
 
-  // Reset form ให้พร้อมสำหรับรอบใหม่
-  form.reset();
-  q1Options.forEach(o => o.classList.remove("active"));
-  q1Value = "";
-  q2Section.classList.add("hidden");
-  q2Other.classList.add("hidden");
+  // เคลียร์ timer เก่า (ถ้ามี)
+  if (responseMsg.hideTimeout) {
+    clearTimeout(responseMsg.hideTimeout);
+  }
+
+  // ซ่อนข้อความหลัง 10 วินาที
+  responseMsg.hideTimeout = setTimeout(() => {
+    responseMsg.classList.remove("show");
+  }, 10000);
+}
+
 
   // ส่งข้อมูลไป Google Sheet เบื้องหลัง
   try {
