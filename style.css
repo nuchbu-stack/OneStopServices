@@ -33,31 +33,36 @@ h1 {
   line-height: 1.6;
 }
 
+/* Q1 options layout */
 .options {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มเรียงแนวนอนเสมอ */
+  gap: 6px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .option {
-  flex: 1;
+  min-width: 0; /* ป้องกันปุ่มดัน layout บน iPhone */
   text-align: center;
-  padding: 20px 0;
-  border-radius: 14px;
+  border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s;
-  user-select: none;
-  font-size: 20px;
-  min-width: 80px;
+  font-size: 18px;
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 80px; /* ความสูงเท่ากันเสมอ */
 }
 
 .option span {
-  display: block;
-  font-size: 14px;
-  margin-top: 6px;
+  font-size: 13px;
+  margin-top: 4px;
 }
 
 /* สีพื้น Q1 */
@@ -67,11 +72,30 @@ h1 {
 .option-2 { background-color: #ffe0b2; }
 .option-1 { background-color: #ffcdd2; }
 
-/* Active border เทา */
+/* ปุ่ม active */
 .option.active {
-  border: 3px solid #616161;
-  transform: scale(1.07);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 0 0 3px #616161, 0 4px 12px rgba(0,0,0,0.15);
+  transform: scale(1.08);
+}
+
+.option.active span {
+  font-weight: bold;
+}
+
+.option.active::first-line {
+  font-size: 1.3em;
+}
+
+/* Responsive บนจอเล็ก */
+@media (max-width: 480px) {
+  .option {
+    font-size: 14px;
+    height: 65px;
+  }
+
+  .option span {
+    font-size: 11px;
+  }
 }
 
 select, textarea {
@@ -93,7 +117,7 @@ button {
   padding: 16px;
   border: none;
   border-radius: 12px;
-  background: #4CAF50; /* สีหลัก: เขียว */
+  background: #4CAF50;
   color: white;
   font-size: 17px;
   cursor: pointer;
@@ -125,7 +149,7 @@ button:hover:not(:disabled) {
 
 @media (max-width: 480px){
   .options {
-    flex-direction: column;
+    gap: 4px; /* ลดช่องว่างลงเล็กน้อยสำหรับมือถือ */
   }
 }
 
@@ -164,133 +188,3 @@ button:hover:not(:disabled) {
   border: 1px solid #ccc;
   font-size: 15px;
 }
-
-
-/* เดิมคงไว้ทั้งหมด ด้านล่างนี้คือส่วนปรับ responsive เพิ่มเติม */
-
-@media (max-width: 600px) {
-  .container {
-    padding: 20px;
-    border-radius: 12px;
-  }
-
-  h1 {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-
-  .options {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-  }
-
-  .option {
-    flex: 0 1 calc(50% - 10px); /* 2 คอลัมน์ */
-    min-width: 120px;
-    font-size: 18px;
-    padding: 15px 0;
-  }
-
-  .option span {
-    font-size: 13px;
-  }
-
-  textarea {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  button {
-    font-size: 15px;
-    padding: 14px;
-  }
-}
-
-@media (max-width: 400px) {
-  .option {
-    flex: 1 1 100%; /* ให้เรียงแถวเดียวถ้าจอเล็กมาก */
-    min-width: auto;
-  }
-}
-
-/* */
-
-
-.options {
-  display: flex;
-  flex-direction: row;      /* แนวนอนเสมอ */
-  justify-content: space-between;
-  gap: 8px;
-  flex-wrap: nowrap;        /* ไม่ตัดบรรทัด */
-}
-
-.option {
-  flex: 1 1 0;              /* ทุกปุ่มกว้างเท่ากัน */
-  text-align: center;
-  padding: 15px 0;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s;
-  user-select: none;
-  font-size: 18px;
-  color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.option span {
-  display: block;
-  font-size: 13px;
-  margin-top: 4px;
-}
-
-
-/* responsive */
-.options {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มแนวนอน */
-  gap: 4px;
-  width: 100%;          /* จำกัดไม่ให้กว้างเกิน container */
-  box-sizing: border-box;
-  overflow: hidden;      /* กันเล็ด */
-}
-
-.option {
-  min-width: 0;          /* 🔑 สำคัญ: ให้ย่อได้ */
-  text-align: center;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s;
-  font-size: 14px;       /* ขนาดเล็กลงสำหรับมือถือ */
-  color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 60px;          /* ความสูงเท่ากัน */
-}
-
-.option span {
-  font-size: 11px;
-  margin-top: 2px;
-}
-
-.option.active {
-  box-shadow: 0 0 0 3px #616161, 0 4px 12px rgba(0,0,0,0.15);
-  transform: scale(1.08); /* ขยายปุ่ม */
-}
-
-.option.active span {
-  font-weight: bold; /* ข้อความตัวหนา */
-}
-
-.option.active::first-line {
-  font-size: 1.3em; /* ขยาย emoji/icon */
-}
-
-
-
