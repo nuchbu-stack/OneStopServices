@@ -186,3 +186,21 @@ button:hover:not(:disabled) {
 #againBtn:hover {
   background: #0D47A1;
 }
+
+/* Q2 layout */
+#q2Other {
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#q2Other:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+  outline: none;
+}
