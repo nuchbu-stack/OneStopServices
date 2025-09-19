@@ -249,44 +249,34 @@ button:hover:not(:disabled) {
 /* responsive */
 .options {
   display: flex;
-  flex-direction: row;      /* แนวนอนเสมอ */
+  flex-direction: row;
   justify-content: space-between;
   gap: 6px;
-  flex-wrap: nowrap;        /* ไม่ตัดบรรทัด */
+  flex-wrap: nowrap;        /* ห้ามตัดบรรทัด */
 }
 
 .option {
-  flex: 1 1 0;
+  flex: 1 1 20%;            /* 5 ปุ่ม = 100% */
   text-align: center;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.3s;
   user-select: none;
-  font-size: 18px;
+  font-size: clamp(12px, 3vw, 18px); /* responsive font */
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  padding: 15px 0;
-  height: 90px;             /* 🔹 ความสูงคงที่ */
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+
+  aspect-ratio: 1 / 1;      /* ให้ปุ่มเป็นสี่เหลี่ยมจัตุรัส (สูงเท่ากันทุกปุ่ม) */
 }
 
 .option span {
-  font-size: 13px;
+  font-size: clamp(10px, 2vw, 13px);
   margin-top: 4px;
 }
 
-/* 📱 Mobile (iPhone / จอเล็ก ≤ 768px) */
-@media (max-width: 768px) {
-  .option {
-    font-size: 14px;
-    height: 70px;          /* 🔹 ลดความสูง */
-    padding: 8px 0;
-  }
-
-  .option span {
-    font-size: 11px;
-  }
-}
 
