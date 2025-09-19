@@ -279,5 +279,18 @@ button:hover:not(:disabled) {
   margin-top: 2px;
 }
 
+.option.active {
+  box-shadow: 0 0 0 3px #616161, 0 4px 12px rgba(0,0,0,0.15);
+  transform: scale(1.08); /* ขยายปุ่ม */
+}
+
+.option.active span {
+  font-weight: bold; /* ข้อความตัวหนา */
+}
+
+.option.active::first-line {
+  font-size: 1.3em; /* ขยาย emoji/icon */
+}
+
 
 
