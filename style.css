@@ -123,3 +123,66 @@ textarea:focus, select:focus, input:focus {
   box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
   outline: none;
 }
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #1976D2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background: #0D47A1;
+  transform: translateY(-2px);
+}
+
+.hidden { display: none; }
+
+/* Thank you page */
+#thankYou {
+  text-align: center;
+  padding: 30px;
+}
+
+#thankYou h2 {
+  color: #1976D2;
+  margin-bottom: 10px;
+}
+
+#thankYou p {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+#thankYou button {
+  margin: 5px;
+  min-width: 140px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#againBtn {
+  background: #1976D2;
+  color: #fff;
+}
+
+#againBtn:hover {
+  background: #0D47A1;
+}
