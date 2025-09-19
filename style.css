@@ -107,6 +107,36 @@ h1 {
   }
 }
 
+/* Q2 radio options ให้เรียงแนวตั้ง */
+#q2Options label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* Q2 "อื่นๆ" inline */
+#q2Options .inline-other {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ช่อง input ของ Q2 (อื่นๆ) */
+#q2Other {
+  flex: 1;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#q2Other:focus {
+  border-color: #1976D2;
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+  outline: none;
+}
+
 select, textarea {
   width: 100%;
   padding: 15px;
@@ -126,23 +156,6 @@ textarea:focus, select:focus, input:focus {
 
 textarea {
   resize: vertical;
-}
-
-#q2Other {
-  width: 100%;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  margin-top: 8px;
-  font-size: 16px;
-  box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-#q2Other:focus {
-  border-color: #1976D2;
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
-  outline: none;
 }
 
 button {
