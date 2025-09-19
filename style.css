@@ -216,3 +216,8 @@ button:hover:not(:disabled) {
 #againBtn:hover {
   background: #0D47A1;
 }
+
+form button[type="submit"] {
+  display: block;
+  margin: 20px auto 0 auto; /* ด้านบน 20px ด้านซ้าย-ขวา auto → กลาง */
+}
