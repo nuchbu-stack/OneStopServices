@@ -221,3 +221,16 @@ form button[type="submit"] {
   display: block;
   margin: 20px auto 0 auto; /* ด้านบน 20px ด้านซ้าย-ขวา auto → กลาง */
 }
+
+/* ทำ animation เวลาเลือก Q1 */
+.option.active {
+  box-shadow: 0 0 0 3px #1976D2, 0 4px 12px rgba(0,0,0,0.15);
+  transform: scale(1.08);
+  animation: pop 0.25s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.08); }
+}
