@@ -249,17 +249,20 @@ button:hover:not(:disabled) {
 /* responsive */
 .options {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มแนวนอนเสมอ */
-  gap: 6px;
+  grid-template-columns: repeat(5, 1fr); /* 5 ปุ่มแนวนอน */
+  gap: 4px;
+  width: 100%;          /* จำกัดไม่ให้กว้างเกิน container */
+  box-sizing: border-box;
+  overflow: hidden;      /* กันเล็ด */
 }
 
 .option {
-  min-width: 0; /* 🔑 ป้องกันไม่ให้ปุ่มดัน layout บน iPhone */
+  min-width: 0;          /* 🔑 สำคัญ: ให้ย่อได้ */
   text-align: center;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s;
-  font-size: clamp(12px, 3vw, 18px); /* responsive font */
+  font-size: 14px;       /* ขนาดเล็กลงสำหรับมือถือ */
   color: #333;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 
@@ -268,12 +271,13 @@ button:hover:not(:disabled) {
   justify-content: center;
   align-items: center;
 
-  height: 70px; /* ความสูงเท่ากันเสมอ */
+  height: 60px;          /* ความสูงเท่ากัน */
 }
 
 .option span {
-  font-size: clamp(10px, 2vw, 13px);
-  margin-top: 4px;
+  font-size: 11px;
+  margin-top: 2px;
 }
+
 
 
