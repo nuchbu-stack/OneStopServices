@@ -82,13 +82,9 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
-// ปุ่มทำใหม่
-document.getElementById("againBtn").addEventListener("click", () => {
+// ลิงก์ทำแบบสอบถามอีกครั้ง
+document.getElementById("againLink").addEventListener("click", (e) => {
+  e.preventDefault();
   thankYou.classList.add("hidden");
   form.classList.remove("hidden");
-});
-
-// ปุ่มปิด
-document.getElementById("closeBtn").addEventListener("click", () => {
-  thankYou.classList.add("hidden");
 });

@@ -19,7 +19,7 @@ body {
 h1 {
   text-align: center;
   margin-bottom: 30px;
-  color: #1976D2; /* modern blue */
+  color: #1976D2;
   font-size: 24px;
   font-weight: 600;
 }
@@ -129,13 +129,12 @@ textarea {
 }
 
 button {
-  width: 100%;
-  padding: 16px;
+  padding: 14px 20px;
   border: none;
   border-radius: 12px;
-  background: #1976D2; /* modern blue */
+  background: #1976D2;
   color: white;
-  font-size: 17px;
+  font-size: 16px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
 }
@@ -152,81 +151,6 @@ button:hover:not(:disabled) {
 
 .hidden { display: none; }
 
-#responseMsg {
-  margin-top: 16px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-/* สถานะข้อความ */
-#responseMsg.success { color: #2e7d32; }
-#responseMsg.error { color: #d32f2f; }
-
-.radio-group {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.radio-group label {
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.radio-group input[type="text"] {
-  margin-top: 8px;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-  width: 100%;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.radio-group input[type="text"]:focus {
-  border-color: #1976D2;
-  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
-  outline: none;
-}
-
-/* inline "อื่นๆ" */
-.inline-other {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.inline-other input[type="text"] {
-  flex: 1;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
-
-#responseMsg {
-  margin-top: 16px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 15px;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-#responseMsg.show {
-  opacity: 1;
-}
-
-/* สีข้อความ */
-#responseMsg.success { color: #2e7d32; }
-#responseMsg.error { color: #d32f2f; }
-
-/* ...โค้ดเดิมของคุณคงไว้ทั้งหมด... */
-
-.hidden { display: none; }
-
 /* Thank you page */
 #thankYou {
   text-align: center;
@@ -235,39 +159,16 @@ button:hover:not(:disabled) {
 
 #thankYou h2 {
   color: #1976D2;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-#thankYou p {
-  margin-bottom: 20px;
-  color: #444;
-}
-
-#thankYou button {
-  margin: 5px;
-  min-width: 140px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
+#thankYou a {
+  font-size: 14px;
+  color: #1976D2;
+  text-decoration: underline;
   cursor: pointer;
-  transition: background 0.3s;
 }
 
-#againBtn {
-  background: #1976D2;
-  color: #fff;
-}
-
-#againBtn:hover {
-  background: #0D47A1;
-}
-
-#closeBtn {
-  background: #ccc;
-  color: #333;
-}
-
-#closeBtn:hover {
-  background: #999;
+#thankYou a:hover {
+  color: #0D47A1;
 }
