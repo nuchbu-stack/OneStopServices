@@ -1,38 +1,41 @@
 const form = document.getElementById("surveyForm");
-const thankYou = document.getElementById("thankYou");
-const q1Options = document.querySelectorAll(".option");
+const q1Options = document.querySelectorAll("#q1Options .option");
 const q2Section = document.getElementById("q2Section");
-const q2OtherRadio = document.getElementById("q2OtherRadio");
 const q2Other = document.getElementById("q2Other");
+const thankYou = document.getElementById("thankYou");
 
 let q1Value = "";
+let q2Value = "";
 
-// handle Q1 select
+// Q1 logic
 q1Options.forEach(opt => {
   opt.addEventListener("click", () => {
     q1Options.forEach(o => o.classList.remove("active"));
     opt.classList.add("active");
     q1Value = opt.dataset.value;
 
-    // show Q2 only if low satisfaction
-    if (q1Value <= 3) {
+    if (q1Value === "1" || q1Value === "2") {
       q2Section.classList.remove("hidden");
     } else {
       q2Section.classList.add("hidden");
+      q2Value = "";
+      q2Other.value = "";
+      q2Other.classList.add("hidden");
+      document.querySelectorAll('input[name="q2"]').forEach(r => r.checked = false);
     }
   });
 });
 
-// handle Q2 Other
-q2OtherRadio.addEventListener("change", () => {
-  q2Other.classList.remove("hidden");
-});
-document.querySelectorAll("input[name='q2']").forEach(r => {
-  r.addEventListener("change", () => {
-    if (r.value !== "อื่นๆ") {
+// Q2 logic
+document.querySelectorAll('input[name="q2"]').forEach(radio => {
+  radio.addEventListener("change", () => {
+    if (radio.value === "อื่นๆ") {
+      q2Other.classList.remove("hidden");
+    } else {
       q2Other.classList.add("hidden");
       q2Other.value = "";
     }
+    q2Value = radio.value;
   });
 });
 
@@ -66,14 +69,6 @@ form.addEventListener("submit", async (e) => {
     document.getElementById("q2Error").classList.add("hidden");
   }
 
-  // Q3 validation
-  if (!document.getElementById("q3").value.trim()) {
-    document.getElementById("q3Error").classList.remove("hidden");
-    valid = false;
-  } else {
-    document.getElementById("q3Error").classList.add("hidden");
-  }
-
   if (!valid) return;
 
   // payload
@@ -83,15 +78,31 @@ form.addEventListener("submit", async (e) => {
     q3: document.getElementById("q3").value.trim()
   });
 
+
+  // ✅ แสดง thank you page
+  form.classList.add("hidden");
+  thankYou.classList.remove("hidden");
+
+  // Reset form
+  form.reset();
+  q1Options.forEach(o => o.classList.remove("active"));
+  q1Value = "";
+  q2Section.classList.add("hidden");
+  q2Other.classList.add("hidden");
+
+  // ส่งข้อมูลไป Google Sheet เบื้องหลัง
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
       body: payload
     });
   } catch (err) {
-    console.error("ส่งข้อมูลไม่สำเร็จ", err);
+    console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
   }
+});
 
-  form.classList.add("hidden");
-  thankYou.classList.remove("hidden");
+// ปุ่มทำใหม่
+document.getElementById("againBtn").addEventListener("click", () => {
+  thankYou.classList.add("hidden");
+  form.classList.remove("hidden");
 });
