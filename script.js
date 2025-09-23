@@ -39,7 +39,7 @@ document.querySelectorAll('input[name="q2"]').forEach(radio => {
   });
 });
 
-form.addEventListener("submit", async (e) => {
+/*form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value.trim() : q2Value;
@@ -59,7 +59,35 @@ form.addEventListener("submit", async (e) => {
     q2: finalQ2 || "",
     q3: document.getElementById("q3").value
   });
+*/
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
+  // Q0
+  const q0Service = document.getElementById("q0Service").value;
+
+  // Q1
+  const q1 = document.querySelector(".option.active")?.dataset.value || "";
+
+  // Q2
+  let q2 = document.querySelector("input[name='q2']:checked")?.value || "";
+  if (q2 === "อื่นๆ") {
+    const q2OtherVal = document.getElementById("q2Other").value.trim();
+    if (q2OtherVal) q2 = q2OtherVal;
+  }
+
+  // Q3
+  const q3 = document.getElementById("q3").value;
+
+  const payload = {
+    q0Service,
+    q1,
+    q2,
+    q3
+  };
+
+  console.log("payload:", payload);
+  
   // ✅ แสดง thank you page
   form.classList.add("hidden");
   thankYou.classList.remove("hidden");
