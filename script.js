@@ -19,6 +19,8 @@ q1Options.forEach(opt => {
 
     if (q1Value === "1" || q1Value === "2") {
       q2Section.classList.remove("hidden");
+      // ซ่อน error ของ Q2 เมื่อเลือกแล้ว
+      document.getElementById("q2Error").classList.add("hidden");    
     } else {
       q2Section.classList.add("hidden");
       q2Value = "";
