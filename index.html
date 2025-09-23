@@ -7,6 +7,7 @@
   <title>Satisfaction Survey</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <div class="container">
@@ -16,27 +17,8 @@
     <form id="surveyForm">
       <!-- Q1 -->
       <div class="question">
-        <label for="q1Service" class="label">เรื่องที่รับบริการ</label>
-        <select name="q1Service" id="q1Service" required>
-          <option value="" disabled selected>-- กรุณาเลือก --</option>
-          <option value="ผ่อนผันทหาร">ผ่อนผันทหาร</option>
-          <option value="Lost & Found (ของหาย)">Lost & Found (ของหาย)</option>
-          <option value="ลงทะเบียนไม้กั้น/เปลี่ยนข้อมูลทะเบียนยานพาหนะ">ลงทะเบียนไม้กั้น/เปลี่ยนข้อมูลทะเบียนยานพาหนะ</option>
-          <option value="ประกันอุบัติเหตุ">ประกันอุบัติเหตุ</option>
-          <option value="นักศึกษาวิชาทหาร (รด.)">นักศึกษาวิชาทหาร (รด.)</option>
-          <option value="ขอดูกล้องวงจรปิด">ขอดูกล้องวงจรปิด</option>
-          <option value="งานวินัยนักศึกษา">งานวินัยนักศึกษา</option>
-          <option value="อุบัติเหตุ-ป่วยฉุกเฉิน">อุบัติเหตุ-ป่วยฉุกเฉิน</option>
-          <option value="จอดรถค้างคืน">จอดรถค้างคืน</option>
-          <option value="ผ่อนชำระค่าเทอม">ผ่อนชำระค่าเทอม</option>
-          <option value="เรื่องร้องเรียน">เรื่องร้องเรียน</option>
-        </select>
-      </div>
-
-      <!-- Q2 -->
-      <div class="question">
         <label class="label">ระดับความพึงพอใจของท่าน</label>
-        <div class="options" id="q2Options">
+        <div class="options" id="q1Options">
           <div class="option option-5" data-value="5" role="button" tabindex="0">😁<br><span>มากที่สุด</span></div>
           <div class="option option-4" data-value="4" role="button" tabindex="0">😊<br><span>มาก</span></div>
           <div class="option option-3" data-value="3" role="button" tabindex="0">😐<br><span>ปานกลาง</span></div>
@@ -45,25 +27,25 @@
         </div>
       </div>
 
-      <!-- Q3 -->
-      <div class="question hidden" id="q3Section">
+      <!-- Q2 -->
+      <div class="question hidden" id="q2Section">
         <label class="label">ท่านไม่พึงพอใจในเรื่องใด</label>
-        <div id="q3Options" class="radio-group">
-          <label><input type="radio" name="q3" value="การให้บริการของเจ้าหน้าที่"> การให้บริการของเจ้าหน้าที่</label>
-          <label><input type="radio" name="q3" value="ความล่าช้า"> ความล่าช้า (จากขั้นตอน / รอนาน)</label>
-          <label><input type="radio" name="q3" value="ความผิดพลาด"> ความผิดพลาด / ไม่ชัดเจน</label>
-          <label><input type="radio" name="q3" value="Facility"> ความพร้อมของอุปกรณ์และสถานที่ (Facility)</label>
+        <div id="q2Options" class="radio-group">
+          <label><input type="radio" name="q2" value="การให้บริการของเจ้าหน้าที่"> การให้บริการของเจ้าหน้าที่</label>
+          <label><input type="radio" name="q2" value="ความล่าช้า"> ความล่าช้า (จากขั้นตอน / รอนาน)</label>
+          <label><input type="radio" name="q2" value="ความผิดพลาด"> ความผิดพลาด / ไม่ชัดเจน</label>
+          <label><input type="radio" name="q2" value="Facility"> ความพร้อมของอุปกรณ์และสถานที่ (Facility)</label>
           <label class="inline-other">
-            <input type="radio" name="q3" value="อื่นๆ" id="q3OtherRadio"> อื่นๆ
-            <input type="text" id="q3Other" name="q3Other" class="hidden" placeholder="โปรดระบุ">
+            <input type="radio" name="q2" value="อื่นๆ" id="q2OtherRadio"> อื่นๆ
+            <input type="text" id="q2Other" name="q2Other" class="hidden" placeholder="โปรดระบุ">
           </label>
         </div>
       </div>
 
-      <!-- Q4 -->
+      <!-- Q3 -->
       <div class="question">
-        <label for="q4" class="label">ข้อเสนอแนะ/ข้อร้องเรียน</label>
-        <textarea name="q4" id="q4" rows="3" placeholder="พิมพ์ข้อความเพิ่มเติม"></textarea>
+        <label for="q3" class="label">ข้อเสนอแนะอื่น ๆ</label>
+        <textarea name="q3" id="q3" rows="3" placeholder="พิมพ์ข้อความเพิ่มเติม"></textarea>
       </div>
 
       <button type="submit">ส่งแบบประเมิน</button>
