@@ -14,6 +14,9 @@ q1Options.forEach(opt => {
     opt.classList.add("active");
     q1Value = opt.dataset.value;
 
+    // ซ่อน error ของ Q1 เมื่อเลือกแล้ว
+    document.getElementById("q1Error").classList.add("hidden");
+
     if (q1Value === "1" || q1Value === "2") {
       q2Section.classList.remove("hidden");
     } else {
