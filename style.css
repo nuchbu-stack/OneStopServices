@@ -239,13 +239,6 @@ form button[type="submit"] {
   color: #d32f2f;
   font-size: 14px;
   margin-top: 6px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.error::before {
-  content: "⚠️";
-  font-size: 16px;
 }
 .hidden {
   display: none;
