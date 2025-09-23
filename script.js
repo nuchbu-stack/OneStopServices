@@ -83,6 +83,7 @@ form.addEventListener("submit", async (e) => {
   try {
     await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: payload
     });
   } catch (err) {
