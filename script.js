@@ -47,6 +47,13 @@ document.querySelectorAll('input[name="q2"]').forEach(radio => {
   });
 });
 
+// Q2 อื่นๆ text input
+q2Other.addEventListener("input", () => {
+  if (q2Other.value.trim() !== "") {
+    document.getElementById("q2Error").classList.add("hidden");
+  }
+});
+
 // handle submit
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
