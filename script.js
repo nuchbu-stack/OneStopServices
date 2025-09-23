@@ -1,4 +1,6 @@
 const form = document.getElementById("surveyForm");
+const q0 = document.getElementById("q0");
+const q0Other = document.getElementById("q0Other");
 const q1Options = document.querySelectorAll("#q1Options .option");
 const q2Section = document.getElementById("q2Section");
 const q2Other = document.getElementById("q2Other");
@@ -6,6 +8,26 @@ const thankYou = document.getElementById("thankYou");
 
 let q1Value = "";
 let q2Value = "";
+
+
+// แสดง/ซ่อน input อื่นๆ ของ Q0
+q0.addEventListener("change", () => {
+  if (q0.value === "อื่นๆ") {
+    q0Other.classList.remove("hidden");
+  } else {
+    q0Other.classList.add("hidden");
+    q0Other.value = "";
+  }
+  document.getElementById("q0Error").classList.add("hidden");
+});
+
+q0Other.addEventListener("input", () => {
+  if (q0Other.value.trim() !== "") {
+    document.getElementById("q0Error").classList.add("hidden");
+  }
+});
+
+
 
 // Q1 logic
 q1Options.forEach(opt => {
@@ -61,6 +83,18 @@ form.addEventListener("submit", async (e) => {
   let valid = true;
   let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value.trim() : q2Value;
 
+  // Q0 validation
+  if (!q0.value) {
+    document.getElementById("q0Error").classList.remove("hidden");
+    valid = false;
+  } else if (q0.value === "อื่นๆ" && !q0Other.value.trim()) {
+    document.getElementById("q0Error").classList.remove("hidden");
+    valid = false;
+  } else {
+    document.getElementById("q0Error").classList.add("hidden");
+  }
+
+
   // Q1 validation
   if (!q1Value) {
     document.getElementById("q1Error").classList.remove("hidden");
@@ -89,6 +123,7 @@ form.addEventListener("submit", async (e) => {
 
   // payload
   const payload = new URLSearchParams({
+    q0: q0.value === "อื่นๆ" ? q0Other.value.trim() : q0.value,
     q1: q1Value,
     q2: finalQ2 || "",
     q3: document.getElementById("q3").value.trim()

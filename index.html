@@ -15,6 +15,29 @@
 
     <!-- ฟอร์ม -->
     <form id="surveyForm">
+
+    <!-- Q0 -->
+    <div class="question">
+      <label class="label">เรื่องที่รับบริการ</label>
+      <select id="q0" name="q0">
+        <option value="">-- กรุณาเลือก --</option>
+        <option value="ผ่อนผันทหาร">ผ่อนผันทหาร</option>
+        <option value="Lost & Found (ของหาย)">Lost & Found (ของหาย)</option>
+        <option value="ลงทะเบียนไม้กั้น/เปลี่ยนข้อมูลทะเบียนยานพาหนะ">ลงทะเบียนไม้กั้น/เปลี่ยนข้อมูลทะเบียนยานพาหนะ</option>
+        <option value="ประกันอุบัติเหตุ">ประกันอุบัติเหตุ</option>
+        <option value="นักศึกษาวิชาทหาร (รด.)">นักศึกษาวิชาทหาร (รด.)</option>
+        <option value="ขอดูกล้องวงจรปิด">ขอดูกล้องวงจรปิด</option>
+        <option value="งานวินัยนักศึกษา">งานวินัยนักศึกษา</option>
+        <option value="อุบัติเหตุ-ป่วยฉุกเฉิน">อุบัติเหตุ-ป่วยฉุกเฉิน</option>
+        <option value="จอดรถค้างคืน">จอดรถค้างคืน</option>
+        <option value="ผ่อนชำระค่าเทอม">ผ่อนชำระค่าเทอม</option>
+        <option value="เรื่องร้องเรียน">เรื่องร้องเรียน</option>
+        <option value="อื่นๆ">อื่นๆ</option>
+      </select>
+      <input type="text" id="q0Other" class="hidden" placeholder="โปรดระบุเรื่องที่รับบริการ" />
+      <div id="q0Error" class="error hidden">กรุณาเลือกเรื่องที่รับบริการ</div>
+    </div>
+      
       <!-- Q1 -->
       <div class="question">
         <label class="label">ระดับความพึงพอใจของท่าน</label>

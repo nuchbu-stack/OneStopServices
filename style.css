@@ -243,3 +243,37 @@ form button[type="submit"] {
 .hidden {
   display: none;
 }
+
+
+/* ===============
+    q0 
+  ================*/
+select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+select:focus {
+  border-color: #0055aa;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,85,170,0.3);
+}
+
+#q0Other {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+#q0Other:focus {
+  border-color: #0055aa;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0,85,170,0.3);
+}
