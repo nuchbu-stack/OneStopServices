@@ -87,7 +87,7 @@ form.addEventListener("submit", async (e) => {
   };
 
   console.log("payload:", payload);
-  
+
   // ✅ แสดง thank you page
   form.classList.add("hidden");
   thankYou.classList.remove("hidden");
@@ -103,7 +103,8 @@ form.addEventListener("submit", async (e) => {
   try {
     await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
-      body: payload
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
     });
   } catch (err) {
     console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
