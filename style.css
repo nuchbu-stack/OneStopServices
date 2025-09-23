@@ -36,7 +36,7 @@ h1 {
   line-height: 1.6;
 }
 
-/* Q1 options layout */
+/* Q2 options layout */
 .options {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -107,21 +107,21 @@ h1 {
   }
 }
 
-/* Q2 radio options ให้เรียงแนวตั้ง */
-#q2Options label {
+/* Q3 radio options ให้เรียงแนวตั้ง */
+#q3Options label {
   display: block;
   margin-bottom: 8px;
 }
 
-/* Q2 "อื่นๆ" inline */
-#q2Options .inline-other {
+/* Q3 "อื่นๆ" inline */
+#q3Options .inline-other {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* ช่อง input ของ Q2 (อื่นๆ) */
-#q2Other {
+/* ช่อง input ของ Q3 (อื่นๆ) */
+#q3Other {
   flex: 1;
   padding: 15px;
   border-radius: 12px;
@@ -131,7 +131,7 @@ h1 {
   transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-#q2Other:focus {
+#q3Other:focus {
   border-color: #1976D2;
   box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
   outline: none;
