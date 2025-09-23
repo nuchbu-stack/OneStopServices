@@ -84,7 +84,7 @@ form.addEventListener("submit", async (e) => {
   });
 
   try {
-    await fetch("YOUR_SCRIPT_URL", {
+    await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec", {
       method: "POST",
       body: payload
     });
