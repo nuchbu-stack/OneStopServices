@@ -32,6 +32,9 @@ q1Options.forEach(opt => {
 // Q2 logic
 document.querySelectorAll('input[name="q2"]').forEach(radio => {
   radio.addEventListener("change", () => {
+    
+    document.getElementById("q2Error").classList.add("hidden");
+
     if (radio.value === "อื่นๆ") {
       q2Other.classList.remove("hidden");
     } else {
