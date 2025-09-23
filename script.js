@@ -83,8 +83,13 @@ form.addEventListener("submit", async (e) => {
   try {
     await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: payload
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        q1Service: q1Service.value,
+        q2: q2Value,
+        q3: finalQ3 || "",
+        q4: document.getElementById("q4").value
+      })
     });
   } catch (err) {
     console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
