@@ -121,9 +121,10 @@ form.addEventListener("submit", async (e) => {
 
   if (!valid) return;
 
+  const q0Value = (q0.value === "อื่นๆ") ? q0Other.value.trim() : q0.value;
   // payload
   const payload = new URLSearchParams({
-    q0: q0.value === "อื่นๆ" ? q0Other.value.trim() : q0.value,
+    q0: q0Value,
     q1: q1Value,
     q2: finalQ2 || "",
     q3: document.getElementById("q3").value.trim()
