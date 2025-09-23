@@ -55,7 +55,7 @@ form.addEventListener("submit", async (e) => {
   }
 
   // Q2 validation
-  if (q1Value <= 3) {
+  if (q1Value < 3) {
     let q2 = document.querySelector("input[name='q2']:checked")?.value || "";
     if (q2 === "อื่นๆ" && !q2Other.value.trim()) {
       document.getElementById("q2Error").classList.remove("hidden");
