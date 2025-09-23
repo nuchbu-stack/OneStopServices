@@ -6,6 +6,7 @@ const q2Section = document.getElementById("q2Section");
 const q2Other = document.getElementById("q2Other");
 const thankYou = document.getElementById("thankYou");
 
+let q0Value = "";
 let q1Value = "";
 let q2Value = "";
 
@@ -27,6 +28,7 @@ q0Other.addEventListener("input", () => {
   }
 });
 
+q0Value = (q0.value === "อื่นๆ") ? q0Other.value.trim() : q0.value;
 
 
 // Q1 logic
@@ -121,7 +123,7 @@ form.addEventListener("submit", async (e) => {
 
   if (!valid) return;
 
-  const q0Value = (q0.value === "อื่นๆ") ? q0Other.value.trim() : q0.value;
+
   // payload
   const payload = new URLSearchParams({
     q0: q0Value,
