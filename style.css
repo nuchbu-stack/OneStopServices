@@ -1,236 +1,137 @@
-body, input, select, textarea, button {
-  font-family: "Kanit", sans-serif;
-}
-
 body {
-  background: linear-gradient(135deg, #f0f4f8, #e3f2fd);
-  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  background: #f4f7fa;
+  margin: 0;
+  padding: 0;
 }
 
 .container {
-  max-width: 650px;
-  margin: auto;
+  max-width: 600px;
+  margin: 20px auto;
   background: #fff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-  color: #1976D2;
-  font-size: 24px;
-  font-weight: 600;
-}
-
-.label {
-  font-weight: 600;
-  margin-bottom: 10px;
-  display: block;
-  color: #333;
+  margin-bottom: 20px;
+  color: #003366;
 }
 
 .question {
-  margin-bottom: 30px;
-  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-/* Q1 options layout */
-.options {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.option {
-  min-width: 0;
-  text-align: center;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 28px;   /* ขยาย emoji/icon */
-  color: #333;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  height: 90px;      /* เพิ่มความสูงให้สมดุลกับ icon */
-}
-
-.option span {
-  font-size: 16px;   /* ขยายข้อความใต้ icon */
-  margin-top: 4px;
-}
-
-/* สีพื้น Q1 */
-.option-5 { background-color: #d0f0d6; }
-.option-4 { background-color: #e6f7c9; }
-.option-3 { background-color: #fff9c4; }
-.option-2 { background-color: #ffe0b2; }
-.option-1 { background-color: #ffcdd2; }
-
-/* ปุ่ม hover */
-.option:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
-}
-
-/* ปุ่ม active */
-.option.active {
-  box-shadow: 0 0 0 3px #1976D2, 0 4px 12px rgba(0,0,0,0.15);
-  transform: scale(1.08);
-}
-
-.option.active span {
+.label {
+  display: block;
+  margin-bottom: 10px;
   font-weight: bold;
 }
 
-.option.active::first-line {
-  font-size: 1.3em;
+.options {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
 }
 
-/* Responsive บนจอเล็ก */
-@media (max-width: 480px) {
-  .option {
-    font-size: 22px;  /* emoji เล็กลงนิดหน่อย */
-    height: 75px;
-  }
-
-  .option span {
-    font-size: 14px;
-  }
+.option {
+  background: #f0f0f0;
+  padding: 12px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  font-size: 22px;
 }
 
-/* Q2 radio options ให้เรียงแนวตั้ง */
-#q2Options label {
+.option span {
+  font-size: 14px;
   display: block;
-  margin-bottom: 8px;
+  margin-top: 4px;
 }
 
-/* Q2 "อื่นๆ" inline */
-#q2Options .inline-other {
+.option:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.option.active {
+  border: 2px solid #003366;
+  background: #e6f0ff;
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inline-other {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* ช่อง input ของ Q2 (อื่นๆ) */
-#q2Other {
-  flex: 1;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-#q2Other:focus {
-  border-color: #1976D2;
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
-  outline: none;
-}
-
-select, textarea {
-  width: 100%;
-  padding: 15px;
-  border-radius: 12px;
-  border: 1px solid #ccc;
-  margin-top: 8px;
-  font-size: 16px;
-  box-sizing: border-box;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-textarea:focus, select:focus, input:focus {
-  border-color: #1976D2;
-  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
-  outline: none;
-}
-
 textarea {
-  resize: vertical;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 14px;
 }
 
-button {
-  padding: 14px 20px;
+.submit-btn {
+  display: block;
+  margin: 0 auto;
+  background: #003366;
+  color: #fff;
+  padding: 12px 24px;
   border: none;
-  border-radius: 12px;
-  background: #1976D2;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-  background: #0D47A1;
-  transform: translateY(-2px);
-}
-
-.hidden { display: none; }
-
-/* Thank you page */
-#thankYou {
-  text-align: center;
-  padding: 30px;
-}
-
-#thankYou h2 {
-  color: #1976D2;
-  margin-bottom: 10px;
-}
-
-#thankYou p {
-  margin-bottom: 20px;
-  color: #444;
-}
-
-#thankYou button {
-  margin: 5px;
-  min-width: 140px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
-#againBtn {
-  background: #1976D2;
-  color: #fff;
+.submit-btn:hover {
+  background: #0055aa;
 }
 
-#againBtn:hover {
-  background: #0D47A1;
+#thankYou {
+  text-align: center;
 }
 
-form button[type="submit"] {
-  display: block;
-  margin: 20px auto 0 auto; /* ด้านบน 20px ด้านซ้าย-ขวา auto → กลาง */
+#thankYou a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0055aa;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-/* ทำ animation เวลาเลือก Q1 */
-.option.active {
-  box-shadow: 0 0 0 3px #1976D2, 0 4px 12px rgba(0,0,0,0.15);
-  transform: scale(1.08);
-  animation: pop 0.25s ease;
+/* error message */
+.error {
+  color: #d32f2f;
+  font-size: 14px;
+  margin-top: 6px;
 }
 
-@keyframes pop {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1.08); }
+.hidden {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .options {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 4px;
+  }
+  .option {
+    padding: 8px;
+    font-size: 18px;
+  }
+  .option span {
+    font-size: 12px;
+  }
 }
