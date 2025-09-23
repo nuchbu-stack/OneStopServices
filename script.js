@@ -44,6 +44,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   let valid = true;
+  let finalQ2 = q2Value === "อื่นๆ" ? q2Other.value.trim() : q2Value;
 
   // Q1 validation
   if (!q1Value) {
@@ -74,7 +75,7 @@ form.addEventListener("submit", async (e) => {
   // payload
   const payload = new URLSearchParams({
     q1: q1Value,
-    q2: document.querySelector("input[name='q2']:checked")?.value || "",
+    q2: finalQ2 || "",
     q3: document.getElementById("q3").value.trim()
   });
 
