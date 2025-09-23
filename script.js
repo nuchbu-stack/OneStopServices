@@ -28,7 +28,7 @@ q0Other.addEventListener("input", () => {
   }
 });
 
-q0Value = (q0.value === "อื่นๆ") ? q0Other.value.trim() : q0.value;
+q0Value = q0.value === "อื่นๆ" ? q0Other.value.trim() : q0.value,
 
 
 // Q1 logic
@@ -126,7 +126,7 @@ form.addEventListener("submit", async (e) => {
 
   // payload
   const payload = new URLSearchParams({
-    q0: q0Value,
+    q0: q0Value || "",
     q1: q1Value,
     q2: finalQ2 || "",
     q3: document.getElementById("q3").value.trim()
@@ -146,7 +146,7 @@ form.addEventListener("submit", async (e) => {
 
   // ส่งข้อมูลไป Google Sheet เบื้องหลัง
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbyRW0AhfShKzeDS3NuLtNWtMzNIUNFdKb7FiIPs8yuozI-yjhtn5zQKRJnQ1rQ4SkVe/exec?cachebust=" + new Date().getTime(), {
+    await fetch("https://script.google.com/macros/s/AKfycby3UN_visOGIEGio6pS7-Toi0OMfZWlhm8_xKIgInUK7KYXlpgn0E4Amfo4P_sezyfp/exec" + new Date().getTime(), {
       method: "POST",
       body: payload
     });
