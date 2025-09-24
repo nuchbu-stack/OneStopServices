@@ -37,7 +37,6 @@ q1Options.forEach(opt => {
     opt.classList.add("active");
     q1Value = opt.dataset.value;
 
-    // ซ่อน error ของ Q1 เมื่อเลือกแล้ว
     document.getElementById("q1Error").classList.add("hidden");
 
     if (q1Value === "1" || q1Value === "2") {
@@ -114,11 +113,10 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  // แสดงสถานะ "กำลังบันทึก" และปิดการใช้งานปุ่ม
   submitButton.disabled = true;
   submitButton.textContent = "กำลังบันทึกข้อมูล...";
 
-  // ✅ เปลี่ยนมาใช้ URLSearchParams แทน JSON เพื่อแก้ปัญหา CORS
+  // ✅ เปลี่ยนวิธีส่งข้อมูลเพื่อแก้ปัญหา CORS โดยใช้ URLSearchParams และไม่ต้องระบุ Header
   const payload = new URLSearchParams({
     q0: finalQ0,
     q1: q1Value,
