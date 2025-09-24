@@ -9,7 +9,7 @@ const submitButton = form.querySelector('button[type="submit"]');
 
 // กำหนด URL ของ Google Apps Script ไว้ในตัวแปรคงที่
 // *** แก้ไขตรงนี้: นำ Web App URL ที่ได้จากการ Deploy Code.gs มาวาง ***
-const GAS_URL = "https://script.google.com/macros/s/AKfycbw7HGRyworhn8IXYEvQ20RnD33YvDnHYlDkIMjO8SlFWGkcumBeMoQx8dN9e80jPXAG/exec";
+const GAS_URL = "https://script.google.com/macros/s/AKfycbzTckPa5NkHRrfTaCwWQQDchHRiqk6AZaZNejabTkziXcZEDyk62ylhfvM6q3zLnPu9/exec";
 
 let q1Value = "";
 
