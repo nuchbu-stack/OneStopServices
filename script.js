@@ -115,9 +115,6 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  //submitButton.disabled = true;
-  //submitButton.textContent = "กำลังบันทึกข้อมูล...";
-
   // ✅ เปลี่ยนวิธีส่งข้อมูลเพื่อแก้ปัญหา CORS โดยใช้ URLSearchParams และไม่ต้องระบุ Header
   const payload = new URLSearchParams({
     q0: finalQ0,
@@ -147,36 +144,6 @@ form.addEventListener("submit", async (e) => {
     console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
   });
 
-
-  
-
-  /*try {
-    const res = await fetch(GAS_URL, {
-      method: "POST",
-      body: payload
-    });
-
-    const data = await res.json();
-
-    if (data.status === "success") {
-      form.classList.add("hidden");
-      thankYou.classList.remove("hidden");
-      form.reset();
-      q1Options.forEach(o => o.classList.remove("active"));
-      q1Value = "";
-      q2Section.classList.add("hidden");
-      q2Other.classList.add("hidden");
-      q0Other.classList.add("hidden");
-    } else {
-      throw new Error(data.message || "Unknown error");
-    }
-  } catch (err) {
-    alert("เกิดข้อผิดพลาดในการบันทึก กรุณาลองใหม่");
-    console.error("Error submitting form:", err);
-  } finally {
-    submitButton.disabled = false;
-    submitButton.textContent = "ส่งแบบประเมิน";
-  } */
 });
 
 
