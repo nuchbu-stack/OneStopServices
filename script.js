@@ -146,7 +146,7 @@ form.addEventListener("submit", async (e) => {
 
   // ส่งข้อมูลไป Google Sheet เบื้องหลัง
   try {
-    await fetch("https://script.google.com/macros/s/AKfycby3UN_visOGIEGio6pS7-Toi0OMfZWlhm8_xKIgInUK7KYXlpgn0E4Amfo4P_sezyfp/exec?cachebust=" + new Date().getTime(), {
+    await fetch("https://script.google.com/macros/s/AKfycbyxrFQkIxujmY5dP2eDh8se5UJTpTUpM7xOIXqzGsFwnmi9b0I5IKypHwq9z2aAGeAg/exec?cachebust=" + new Date().getTime(), {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: payload
