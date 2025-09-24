@@ -150,6 +150,7 @@ form.addEventListener("submit", async (e) => {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: payload
+      mode: "no-cors"   // ✅ ปิดการเช็ก CORS
     });
   } catch (err) {
     console.error("ส่งข้อมูลไม่สำเร็จ (background)", err);
