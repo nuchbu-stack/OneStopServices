@@ -12,6 +12,7 @@ const submitButton = form.querySelector('button[type="submit"]');
 const GAS_URL = "https://script.google.com/macros/s/AKfycby9BzjexjxZjIMJU2kwrRT0ogoRIrJe1fv0AT3HFpZZSi5MONKAF2pOL6GGbAJMYVoC/exec";
 
 let q1Value = "";
+let q2Value = "";
 
 // แสดง/ซ่อน input อื่นๆ ของ Q0
 q0.addEventListener("change", () => {
@@ -78,6 +79,7 @@ form.addEventListener("submit", async (e) => {
 
   // Validation
   const finalQ0 = q0.value === "อื่นๆ" ? q0Other.value.trim() : q0.value;
+  
   if (!finalQ0) {
     document.getElementById("q0Error").classList.remove("hidden");
     valid = false;
@@ -113,8 +115,8 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  submitButton.disabled = true;
-  submitButton.textContent = "กำลังบันทึกข้อมูล...";
+  //submitButton.disabled = true;
+  //submitButton.textContent = "กำลังบันทึกข้อมูล...";
 
   // ✅ เปลี่ยนวิธีส่งข้อมูลเพื่อแก้ปัญหา CORS โดยใช้ URLSearchParams และไม่ต้องระบุ Header
   const payload = new URLSearchParams({
@@ -124,7 +126,20 @@ form.addEventListener("submit", async (e) => {
     q3: document.getElementById("q3").value.trim()
   });
 
-  try {
+    // ✅ ไปหน้า Thank You ทันที
+  form.classList.add("hidden");
+  thankYou.classList.remove("hidden");
+
+  // Reset form
+  form.reset();
+  q1Options.forEach(o => o.classList.remove("active"));
+  q1Value = "";
+  q2Value = "";
+  q2Section.classList.add("hidden");
+  q2Other.classList.add("hidden");
+
+
+  /*try {
     const res = await fetch(GAS_URL, {
       method: "POST",
       body: payload
@@ -150,8 +165,9 @@ form.addEventListener("submit", async (e) => {
   } finally {
     submitButton.disabled = false;
     submitButton.textContent = "ส่งแบบประเมิน";
-  }
+  } */
 });
+
 
 // ปุ่มทำใหม่
 document.getElementById("againBtn").addEventListener("click", () => {
